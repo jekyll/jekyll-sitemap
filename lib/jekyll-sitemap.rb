@@ -1,6 +1,7 @@
+require File.expand_path('static_file', File.dirname(__FILE__))
+
 module Jekyll
   class JekyllSitemap < Jekyll::Generator
-
     safe true
 
     # Main plugin action, called by Jekyll-core
@@ -17,7 +18,7 @@ module Jekyll
 
     # Path to sitemap.xml template file
     def source_path
-      File.expand_path 'sitemap.xml', File.dirname(__FILE__)
+      File.expand_path "sitemap.xml", File.dirname(__FILE__)
     end
 
     # Destination for sitemap.xml file within the site source directory
