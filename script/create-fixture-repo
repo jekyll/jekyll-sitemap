@@ -1,0 +1,21 @@
+#!/bin/sh
+#/ Usage: create-fixture-repo name
+#/
+#/ Create a new example repository for testing
+#/
+#/ This will create a bare repository in `spec/fixtures/NAME.git`,
+#/ and a full repository that can be modified in `tmp/$NAME`. Commit your changes
+#/ to the repository in `./tmp` and then use `git push origin` to push the
+#/ changes into the bare repository. The bare repository can then be committed
+#/ along with the tests that make use of it.
+
+set -e
+
+# show usage message
+if [ "$1" == "--help" ]; then
+    grep ^#/ <"$0" | cut -c4-
+    exit 2
+fi
+
+git init --bare --template='' spec/fixtures/$1.git
+git clone spec/fixtures/$1.git tmp/$1
