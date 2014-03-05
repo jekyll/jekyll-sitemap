@@ -12,7 +12,7 @@ module Jekyll
     def to_liquid
       {
         "path"          => relative_path,
-        "modified_time" => mtime.to_s,
+        "modified_time" => Time.at(mtime),
         "extname"       => File.extname(relative_path)
       }
     end
