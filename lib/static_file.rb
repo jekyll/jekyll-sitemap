@@ -6,13 +6,13 @@ module Jekyll
 
     # Returns the source file path relative to the site source
     def relative_path
-      @relative_path ||= path.sub(/\A#{@site.source}\//, '')
+      @relative_path ||= path.sub(/\A#{@site.source}/, '')
     end
 
     def to_liquid
       {
         "path"          => relative_path,
-        "modified_time" => mtime.to_s,
+        "modified_time" => Time.at(mtime),
         "extname"       => File.extname(relative_path)
       }
     end
