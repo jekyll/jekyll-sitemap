@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>{% capture site_url %}{% if site.url %}{{ site.url }}{% else %}{{ site.github.url }}{% endif %}{% endcapture %}
-    <loc>{{ site_url }}/</loc>
-    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
-    <priority>1.0</priority>
-  </url>
+  {% capture site_url %}{% if site.url %}{{ site.url }}{% else %}{{ site.github.url }}{% endif %}{% endcapture %}
   {% for post in site.posts %}
   <url>
     <loc>{{ site_url }}{{ post.url }}</loc>
@@ -18,7 +14,7 @@
     <loc>{{ site_url }}{{ post.url | replace:'index.html','' }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>{% if post.url == "/" %}1.0{% else %}0.7{% endif %}</priority>
   </url>
   {% endfor %}
   {% for file in site.static_files %}
