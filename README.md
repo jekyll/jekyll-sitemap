@@ -12,7 +12,20 @@ gems:
   - jekyll-sitemap
 ```
 
-## Roadmap
+## Developing locally
 
-* Tests
-* Index static HTML files not part of Jekyll
+Use `script/bootstrap` to bootstrap your local development environment.
+
+Use `script/console` to load a local IRB console with the Gem.
+
+## Testing
+
+1. `script/bootstrap`
+2. `script/cibuild`
+
+## Contributing
+
+1. Fork the project
+2. Create a descriptively named feature branch
+3. Add your feature
+4. Submit a pull request
