@@ -14,7 +14,7 @@
     <loc>{{ site_url }}{{ post.url | replace:'index.html','' }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>{% if post.url == "/" %}1.0{% else %}0.7{% endif %}</priority>
+    <priority>{% if post.url == "/" or post.url == "/index.html" %}1.0{% else %}0.7{% endif %}</priority>
   </url>
   {% endfor %}
   {% for file in site.static_files %}
