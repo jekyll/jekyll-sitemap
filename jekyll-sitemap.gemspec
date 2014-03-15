@@ -1,8 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = "jekyll-sitemap"
-  s.summary     = ""
-  s.description = ""
-  s.version     = "0.0.1"
+  s.summary     = "Automatically generate a sitemap.xml for your Jekyll site."
+  s.version     = "0.1.0"
   s.authors     = ["GitHub, Inc."]
   s.email       = "support@github.com"
   s.homepage    = "https://github.com/github/jekyll-sitemap"
