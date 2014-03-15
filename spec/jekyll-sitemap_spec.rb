@@ -8,7 +8,7 @@ describe(Jekyll::JekyllSitemap) do
       "url"         => "http://example.org"
     })
   end
-  let(:site)   { Jekyll::Site.new(config) }
+  let(:site)     { Jekyll::Site.new(config) }
   let(:contents) { File.read(dest_dir("sitemap.xml")) }
   before(:each) do
     site.process
@@ -16,6 +16,10 @@ describe(Jekyll::JekyllSitemap) do
 
   it "creates a sitemap.xml file" do
     expect(File.exist?(dest_dir("sitemap.xml"))).to be_true
+  end
+
+  it "sets the base URL for the site as priority 1.0" do
+    expect(contents).to match /<loc>http:\/\/example\.org\/<\/loc>\s+<lastmod>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}-\d{2}:\d{2}<\/lastmod>\s+<changefreq>weekly<\/changefreq>\s+<priority>1\.0<\/priority>/
   end
 
   it "puts all the pages in the sitemap.xml file" do
