@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.files         = Dir["lib/*"]
   s.require_paths = ["lib"]
 
-  s.add_dependency "jekyll", "~> 1.4.3"
+  s.add_dependency "jekyll", "~> 1.4"
   s.add_development_dependency "rspec"
   s.add_development_dependency "rake"
 end
