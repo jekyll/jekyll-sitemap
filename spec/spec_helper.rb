@@ -1,5 +1,5 @@
 require 'jekyll'
-require File.expand_path('../lib/jekyll-sitemap', __dir__)
+require File.expand_path('../lib/jekyll-sitemap', File.dirname(__FILE__))
 
 Jekyll.logger.log_level = 5
 
