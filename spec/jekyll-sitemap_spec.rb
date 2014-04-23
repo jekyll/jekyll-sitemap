@@ -19,7 +19,7 @@ describe(Jekyll::JekyllSitemap) do
   end
 
   it "sets the base URL for the site as priority 1.0" do
-    expect(contents).to match /<loc>http:\/\/example\.org\/<\/loc>\s+<lastmod>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}-\d{2}:\d{2}<\/lastmod>\s+<changefreq>weekly<\/changefreq>\s+<priority>1\.0<\/priority>/
+    expect(contents).to match /<loc>http:\/\/example\.org\/<\/loc>\s+<lastmod>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(-|\+)\d{2}:\d{2}<\/lastmod>\s+<changefreq>weekly<\/changefreq>\s+<priority>1\.0<\/priority>/
   end
 
   it "puts all the pages in the sitemap.xml file" do
@@ -34,9 +34,9 @@ describe(Jekyll::JekyllSitemap) do
   end
 
   it "generates the correct date for each of the posts" do
-    expect(contents).to match /<lastmod>2014-03-04T00:00:00-\d+:\d+<\/lastmod>/
-    expect(contents).to match /<lastmod>2014-03-02T00:00:00-\d+:\d+<\/lastmod>/
-    expect(contents).to match /<lastmod>2013-12-12T00:00:00-\d+:\d+<\/lastmod>/
+    expect(contents).to match /<lastmod>2014-03-04T00:00:00(-|\+)\d+:\d+<\/lastmod>/
+    expect(contents).to match /<lastmod>2014-03-02T00:00:00(-|\+)\d+:\d+<\/lastmod>/
+    expect(contents).to match /<lastmod>2013-12-12T00:00:00(-|\+)\d+:\d+<\/lastmod>/
   end
 
   it "puts all the static HTML files in the sitemap.xml file" do
