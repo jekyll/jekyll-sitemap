@@ -8,7 +8,7 @@
     <priority>0.8</priority>
   </url>
   {% endfor %}
-  {% for post in site.pages %}
+  {% for post in site.html_pages %}
   <url>
     <loc>{{ site_url }}{{ post.url | replace:'index.html','' }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
