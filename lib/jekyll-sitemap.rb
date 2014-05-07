@@ -1,5 +1,4 @@
 require 'fileutils'
-require File.expand_path('static_file', File.dirname(__FILE__))
 
 module Jekyll
   class JekyllSitemap < Jekyll::Generator
@@ -9,7 +8,7 @@ module Jekyll
     def generate(site)
       @site = site
       @site.config["time"]         = Time.new
-      @site.config["static_files"] = html_files.map(&:to_liquid)
+      @site.config["html_files"]   = html_files.map(&:to_liquid)
       unless sitemap_exists?
         write
         @site.keep_files ||= []
