@@ -24,7 +24,7 @@ describe(Jekyll::JekyllSitemap) do
 
   it "puts all the pages in the sitemap.xml file" do
     expect(contents).to match /<loc>http:\/\/example\.org\/<\/loc>/
-    expect(contents).to match /<loc>http:\/\/example\.org\/some-subfolder\/this-is-a-subpage-baby\.html<\/loc>/
+    expect(contents).to match /<loc>http:\/\/example\.org\/some-subfolder\/this-is-a-subpage\.html<\/loc>/
   end
 
   it "puts all the posts in the sitemap.xml file" do
@@ -40,7 +40,7 @@ describe(Jekyll::JekyllSitemap) do
   end
 
   it "puts all the static HTML files in the sitemap.xml file" do
-    expect(contents).to match /<loc>http:\/\/example\.org\/some-subfolder\/this-is-a-subfile-baby\.html<\/loc>/
+    expect(contents).to match /<loc>http:\/\/example\.org\/some-subfolder\/this-is-a-subfile\.html<\/loc>/
   end
 
   it "does not include assets or any static files that aren't .html" do
