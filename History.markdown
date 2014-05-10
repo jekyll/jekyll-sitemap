@@ -1,5 +1,7 @@
 ## HEAD
 
+## 0.4.1 / 2014-05-10
+
 ### Bug Fixes
 
   * Force sitemap layout to be `nil` (#16)
