@@ -1,5 +1,9 @@
 ## HEAD
 
+### Minor Enhancements
+
+  * Allow users to exclude a page/post from the sitemap (#11)
+
 ## 0.4.1 / 2014-05-10
 
 ### Bug Fixes
