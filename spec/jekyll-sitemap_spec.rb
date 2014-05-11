@@ -47,4 +47,12 @@ describe(Jekyll::JekyllSitemap) do
     expect(contents).not_to match /<loc>http:\/\/example\.org\/images\/hubot\.png<\/loc>/
     expect(contents).not_to match /<loc>http:\/\/example\.org\/feeds\/atom\.xml<\/loc>/
   end
+
+  it "does not include posts that have set 'sitemap: false'" do
+    expect(contents).not_to match /\/exclude-this-post\.html<\/loc>/
+  end
+
+  it "does not include pages that have set 'sitemap: false'" do
+    expect(contents).not_to match /\/exclude-this-page\.html<\/loc>/
+  end
 end
