@@ -14,6 +14,8 @@ gems:
   - jekyll-sitemap
 ```
 
+Make sure to place the `jekyll-sitemap` gem before any other content generating gem that you wish to exclude. As the sitemap will include all dirs and `.html` files.
+
 ## Developing locally
 
 Use `script/bootstrap` to bootstrap your local development environment.
