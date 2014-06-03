@@ -59,4 +59,12 @@ describe(Jekyll::JekyllSitemap) do
   it "correctly formats timestamps of static files" do
     expect(contents).to match /\/this-is-a-subfile\.html<\/loc>\s+<lastmod>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z<\/lastmod>/
   end
+
+  it "allows overriding page priority" do
+    expect(contents).to match /\/this-has-priority\.html<\/loc>\s+<lastmod>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(-|\+)\d{2}:\d{2}<\/lastmod>\s+<changefreq>weekly<\/changefreq>\s+<priority>0\.9<\/priority>/
+  end
+
+  it "allows overriding post priority" do
+    expect(contents).to match /\/low-priority-post\.html<\/loc>\s+<lastmod>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(-|\+)\d{2}:\d{2}<\/lastmod>\s+<priority>0\.3<\/priority>/
+  end
 end
