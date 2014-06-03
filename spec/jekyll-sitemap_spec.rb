@@ -15,7 +15,7 @@ describe(Jekyll::JekyllSitemap) do
   end
 
   it "creates a sitemap.xml file" do
-    expect(File.exist?(dest_dir("sitemap.xml"))).to be_true
+    expect(File.exist?(dest_dir("sitemap.xml"))).to be_truthy
   end
 
   it "sets the base URL for the site as priority 1.0" do
