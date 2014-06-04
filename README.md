@@ -14,6 +14,19 @@ gems:
   - jekyll-sitemap
 ```
 
+## Customizing
+
+You can change sitemap settings for individual pages.
+
+To exclude a page or post from the sitemap, add `sitemap: false` to the page's or post's front matter.
+
+To override the priority of your page or post:
+
+```yml
+sitemap:
+  priority: 0.9
+```
+
 ## Developing locally
 
 Use `script/bootstrap` to bootstrap your local development environment.
