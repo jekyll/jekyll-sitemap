@@ -9,6 +9,11 @@
 ### Bug Fixes
 
   * Force sitemap layout to be `nil` (#16)
+  * Correct seconds in timestamp for static files (#24)
+
+# Development Fixes
+
+  * Upgrade to Rspec 3.0 and use `be_truthy` (#24)
 
 ## 0.4.0 / 2014-05-06
 
