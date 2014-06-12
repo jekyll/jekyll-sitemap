@@ -15,7 +15,7 @@ describe(Jekyll::JekyllSitemap) do
   end
 
   it "creates a sitemap.xml file" do
-    expect(File.exist?(dest_dir("sitemap.xml"))).to be_true
+    expect(File.exist?(dest_dir("sitemap.xml"))).to be_truthy
   end
 
   it "sets the base URL for the site as priority 1.0" do
@@ -54,5 +54,9 @@ describe(Jekyll::JekyllSitemap) do
 
   it "does not include pages that have set 'sitemap: false'" do
     expect(contents).not_to match /\/exclude-this-page\.html<\/loc>/
+  end
+
+  it "correctly formats timestamps of static files" do
+    expect(contents).to match /\/this-is-a-subfile\.html<\/loc>\s+<lastmod>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z<\/lastmod>/
   end
 end
