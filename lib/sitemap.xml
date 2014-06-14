@@ -4,14 +4,14 @@
   {% for post in site.posts %}{% unless post.sitemap == false %}
   <url>
     <loc>{{ site_url }}{{ post.url }}</loc>
-    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+    <lastmod>{% if post.updated %}{{ post.updated | date_to_xmlschema }}{% else %}{{ post.date | date_to_xmlschema }}{% endif %}</lastmod>
     <priority>0.8</priority>
   </url>
   {% endunless %}{% endfor %}
   {% for post in site.html_pages %}{% unless post.sitemap == false %}
   <url>
     <loc>{{ site_url }}{{ post.url | replace:'index.html','' }}</loc>
-    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <lastmod>{% if post.updated %}{{ post.updated | date_to_xmlschema }}{% else %}{{ post.date | date_to_xmlschema }}{% endif %}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>{% if post.url == "/" or post.url == "/index.html" %}1.0{% else %}0.7{% endif %}</priority>
   </url>
