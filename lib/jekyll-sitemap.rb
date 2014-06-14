@@ -9,6 +9,7 @@ module Jekyll
       @site = site
       @site.config["time"]         = Time.new
       @site.config["html_files"]   = html_files.map(&:to_liquid)
+      add_updated_data
       unless sitemap_exists?
         write
         @site.keep_files ||= []
@@ -47,6 +48,12 @@ module Jekyll
     # Checks if a sitemap already exists in the site source
     def sitemap_exists?
       File.exists? File.expand_path "sitemap.xml", @site.source
+    end
+
+    def add_updated_data
+      @site.posts.each do |post|
+        post.data["updated"] = File.mtime(File.expand_path(post.path, @site.source))
+      end
     end
   end
 end
