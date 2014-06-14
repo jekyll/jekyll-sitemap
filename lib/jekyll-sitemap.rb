@@ -54,6 +54,9 @@ module Jekyll
       @site.posts.each do |post|
         post.data["updated"] = File.mtime(File.expand_path(post.path, @site.source))
       end
+      @site.pages.each do |page|
+        page.data["updated"] = File.mtime(File.expand_path(page.path, @site.source)) if page.html?
+      end
     end
   end
 end
