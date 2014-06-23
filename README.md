@@ -31,3 +31,7 @@ Use `script/console` to load a local IRB console with the Gem.
 2. Create a descriptively named feature branch
 3. Add your feature
 4. Submit a pull request
+
+## Issues
+1. If the `sitemap.xml` doesn't generate in the `\_site` folder ensure `\_config.yml` doesn't have `safe: true`. That prevents all plugins from working.
+
