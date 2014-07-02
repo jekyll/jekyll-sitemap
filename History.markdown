@@ -1,5 +1,7 @@
 ## HEAD
 
+## 0.5.0 / 2014-06-02
+
 ### Minor Enhancements
 
   * Allow users to exclude a page/post from the sitemap (#11)
