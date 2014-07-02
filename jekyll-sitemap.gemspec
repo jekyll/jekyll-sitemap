@@ -1,16 +1,21 @@
-Gem::Specification.new do |s|
-  s.name        = "jekyll-sitemap"
-  s.summary     = "Automatically generate a sitemap.xml for your Jekyll site."
   s.version     = "0.4.1"
-  s.authors     = ["GitHub, Inc."]
-  s.email       = "support@github.com"
-  s.homepage    = "https://github.com/github/jekyll-sitemap"
-  s.licenses    = ["MIT"]
+# coding: utf-8
 
-  s.files         = Dir["lib/*"]
-  s.require_paths = ["lib"]
+Gem::Specification.new do |spec|
+  spec.name        = "jekyll-sitemap"
+  spec.summary     = "Automatically generate a sitemap.xml for your Jekyll site."
+  spec.authors     = ["GitHub, Inc."]
+  spec.email       = "support@github.com"
+  spec.homepage    = "https://github.com/jekyll/jekyll-sitemap"
+  spec.licenses    = ["MIT"]
 
-  s.add_dependency "jekyll", "~> 2.0"
-  s.add_development_dependency "rspec", "~> 3.0"
-  s.add_development_dependency "rake"
+  spec.files         = `git ls-files -z`.split("\x0")
+  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.require_paths = ["lib"]
+
+  spec.add_development_dependency "jekyll", "~> 2.0"
+  spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency "bundler", "~> 1.6"
 end
