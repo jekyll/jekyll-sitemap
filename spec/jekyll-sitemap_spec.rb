@@ -5,7 +5,10 @@ describe(Jekyll::JekyllSitemap) do
     Jekyll.configuration({
       "source"      => source_dir,
       "destination" => dest_dir,
-      "url"         => "http://example.org"
+      "url"         => "http://example.org",
+      "collections" => { "my_collection" => { "output" => true },
+                         "other_things"  => { "output" => false }
+                       }
     })
   end
   let(:site)     { Jekyll::Site.new(config) }
@@ -35,6 +38,14 @@ describe(Jekyll::JekyllSitemap) do
     expect(contents).to match /<loc>http:\/\/example\.org\/2014\/03\/04\/march-the-fourth\.html<\/loc>/
     expect(contents).to match /<loc>http:\/\/example\.org\/2014\/03\/02\/march-the-second\.html<\/loc>/
     expect(contents).to match /<loc>http:\/\/example\.org\/2013\/12\/12\/dec-the-second\.html<\/loc>/
+  end
+
+  it "puts all the `output:true` collections in the sitemap.xml file" do
+    expect(contents).to match /<loc>http:\/\/example\.org\/my_collection\/test\.html<\/loc>/
+  end
+
+  it "doesnt put all the `output:false` collections in the sitemap.xml file" do
+    expect(contents).to_not match /<loc>http:\/\/example\.org\/other_things\/test2\.html<\/loc>/
   end
 
   it "generates the correct date for each of the posts" do
