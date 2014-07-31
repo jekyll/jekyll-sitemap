@@ -1,5 +1,9 @@
 ## HEAD
 
+### Bug Fixes
+
+  * Explicitly set sitemap layout to `nil` to avoid warning (#32)
+
 ## 0.5.0 / 2014-06-02
 
 ### Minor Enhancements
