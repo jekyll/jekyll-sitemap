@@ -14,6 +14,10 @@ describe(Jekyll::JekyllSitemap) do
     site.process
   end
 
+  it "has no layout" do
+    expect(contents).not_to match(/\ATHIS IS MY LAYOUT/)
+  end
+
   it "creates a sitemap.xml file" do
     expect(File.exist?(dest_dir("sitemap.xml"))).to be_truthy
   end
