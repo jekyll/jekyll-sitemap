@@ -63,4 +63,8 @@ describe(Jekyll::JekyllSitemap) do
   it "correctly formats timestamps of static files" do
     expect(contents).to match /\/this-is-a-subfile\.html<\/loc>\s+<lastmod>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z<\/lastmod>/
   end
+
+  it "does not include posts that have set 'draft: true'" do
+    expect(contents).not_to match /\/exclude-drafts\.html<\/loc>/
+  end
 end
