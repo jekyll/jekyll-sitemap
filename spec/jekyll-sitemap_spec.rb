@@ -40,12 +40,22 @@ describe(Jekyll::JekyllSitemap) do
     expect(contents).to match /<loc>http:\/\/example\.org\/2013\/12\/12\/dec-the-second\.html<\/loc>/
   end
 
-  it "puts all the `output:true` collections in the sitemap.xml file" do
-    expect(contents).to match /<loc>http:\/\/example\.org\/my_collection\/test\.html<\/loc>/
-  end
+  describe "collections" do
+    it "puts all the `output:true` into sitemap.xml" do
+      expect(contents).to match /<loc>http:\/\/example\.org\/my_collection\/test\.html<\/loc>/
+    end
 
-  it "doesnt put all the `output:false` collections in the sitemap.xml file" do
-    expect(contents).to_not match /<loc>http:\/\/example\.org\/other_things\/test2\.html<\/loc>/
+    it "doesn't put all the `output:false` into sitemap.xml" do
+      expect(contents).to_not match /<loc>http:\/\/example\.org\/other_things\/test2\.html<\/loc>/
+    end
+
+    it "remove 'index.html' for directory custom permalinks" do
+      expect(contents).to match /<loc>http:\/\/example\.org\/permalink\/<\/loc>/
+    end
+
+    it "doesn't remove filename for non-directory custom permalinks" do
+      expect(contents).to match /<loc>http:\/\/example\.org\/permalink\/unique_name\.html<\/loc>/
+    end
   end
 
   it "generates the correct date for each of the posts" do
