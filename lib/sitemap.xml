@@ -4,7 +4,11 @@
   {% for post in site.posts %}{% unless post.sitemap == false %}
   <url>
     <loc>{{ site_url }}{{ post.url }}</loc>
+    {% if post.last_modified_at %}
+    <lastmod>{{ post.last_modified_at | date_to_xmlschema }}</lastmod>
+    {% else %}
     <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+    {% endif %}
     <priority>0.8</priority>
   </url>
   {% endunless %}{% endfor %}
