@@ -2,6 +2,7 @@
 
 ### Minor Enhancements
 
+  * Include custom collections in the sitemap. (#30)
   * Use `post.last_modified_at` for post `<lastmod>` if available (#37)
 
 ### Bug Fixes
