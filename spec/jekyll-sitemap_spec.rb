@@ -5,7 +5,10 @@ describe(Jekyll::JekyllSitemap) do
     Jekyll.configuration({
       "source"      => source_dir,
       "destination" => dest_dir,
-      "url"         => "http://example.org"
+      "url"         => "http://example.org",
+      "collections" => { "my_collection" => { "output" => true },
+                         "other_things"  => { "output" => false }
+                       }
     })
   end
   let(:site)     { Jekyll::Site.new(config) }
@@ -35,6 +38,24 @@ describe(Jekyll::JekyllSitemap) do
     expect(contents).to match /<loc>http:\/\/example\.org\/2014\/03\/04\/march-the-fourth\.html<\/loc>/
     expect(contents).to match /<loc>http:\/\/example\.org\/2014\/03\/02\/march-the-second\.html<\/loc>/
     expect(contents).to match /<loc>http:\/\/example\.org\/2013\/12\/12\/dec-the-second\.html<\/loc>/
+  end
+
+  describe "collections" do
+    it "puts all the `output:true` into sitemap.xml" do
+      expect(contents).to match /<loc>http:\/\/example\.org\/my_collection\/test\.html<\/loc>/
+    end
+
+    it "doesn't put all the `output:false` into sitemap.xml" do
+      expect(contents).to_not match /<loc>http:\/\/example\.org\/other_things\/test2\.html<\/loc>/
+    end
+
+    it "remove 'index.html' for directory custom permalinks" do
+      expect(contents).to match /<loc>http:\/\/example\.org\/permalink\/<\/loc>/
+    end
+
+    it "doesn't remove filename for non-directory custom permalinks" do
+      expect(contents).to match /<loc>http:\/\/example\.org\/permalink\/unique_name\.html<\/loc>/
+    end
   end
 
   it "generates the correct date for each of the posts" do

@@ -20,6 +20,16 @@
     <priority>{% if post.url == "/" or post.url == "/index.html" %}1.0{% else %}0.7{% endif %}</priority>
   </url>
   {% endunless %}{% endfor %}
+  {% for collection in site.collections %}{% unless collection.last.output == false %}
+  {% for doc in collection.last.docs %}{% unless doc.sitemap == false %}
+  <url>
+    <loc>{{ site_url }}{{ doc.url | replace:'index.html','' }}</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>{% if doc.url == "/" or doc.url == "/index.html" %}1.0{% else %}0.7{% endif %}</priority>
+  </url>
+  {% endunless %}{% endfor %}
+  {% endunless %}{% endfor %}
   {% for file in site.html_files %}
   <url>
     <loc>{{ site_url }}{{ file.path }}</loc>
