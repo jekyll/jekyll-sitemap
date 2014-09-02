@@ -14,6 +14,14 @@ gems:
   - jekyll-sitemap
 ```
 
+If all gem plugins have the same `priority`, they will be executed in the
+order they are required, generally. Thus, if you have other plugins which
+generate content and store that content in `site.pages`, `site.posts`, or
+`site.collections`, be sure to require `jekyll-sitemap` either *after*
+those other gems if you *want* the sitemap to include the generated
+content, or *before* those other gems if you *don't want* the sitemap to
+include the generated content from the gems. (Programming is *hard*.)
+
 ## Developing locally
 
 Use `script/bootstrap` to bootstrap your local development environment.
