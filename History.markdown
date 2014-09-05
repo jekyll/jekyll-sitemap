@@ -5,6 +5,8 @@
   * Include custom collections in the sitemap. (#30)
   * Use `post.last_modified_at` for post `<lastmod>` if available (#37)
 
+## 0.5.1 / 2014-07-31
+
 ### Bug Fixes
 
   * Explicitly set sitemap layout to `nil` to avoid warning (#32)
