@@ -2,6 +2,12 @@
 
 ### Minor Enhancements
 
+### Bug Fixes
+
+## 0.6.0 / 2014-09-05
+
+### Minor Enhancements
+
   * Include custom collections in the sitemap. (#30)
   * Use `post.last_modified_at` for post `<lastmod>` if available (#37)
 
