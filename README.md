@@ -22,6 +22,15 @@ those other gems if you *want* the sitemap to include the generated
 content, or *before* those other gems if you *don't want* the sitemap to
 include the generated content from the gems. (Programming is *hard*.)
 
+## Exclusions
+
+If you would like to exclude specific pages/posts from the sitemap set the 
+sitemap flag to `false` in the front matter for the page/post.
+
+```yml
+sitemap: false
+```
+
 ## Developing locally
 
 Use `script/bootstrap` to bootstrap your local development environment.
