@@ -4,6 +4,10 @@
 
 ### Bug Fixes
 
+### Development Fixes
+
+  * Adding information about exclusion flag (#45)
+
 ## 0.6.0 / 2014-09-05
 
 ### Minor Enhancements
