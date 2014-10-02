@@ -51,6 +51,6 @@ Use `script/console` to load a local IRB console with the Gem.
 
 ## Issues
 1. If the `sitemap.xml` doesn't generate in the `\_site` folder ensure `\_config.yml` doesn't have `safe: true`. That prevents all plugins from working.
-2. 2. If the `sitemap.xml` doesn't generate in the `\_site` folder, ensure that you don't have a sitemap generator plugin in your `_plugin` folder.
+2. If the `sitemap.xml` doesn't generate in the `\_site` folder, ensure that you don't have a sitemap generator plugin in your `_plugin` folder.
 
 
