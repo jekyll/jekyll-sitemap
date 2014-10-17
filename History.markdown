@@ -4,6 +4,8 @@
 
 ### Bug Fixes
 
+  * Add UTC offset to `<lastmod>` to handle non-UTC timezones (#49)
+
 ### Development Fixes
 
   * Adding information about exclusion flag (#45)
