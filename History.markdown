@@ -2,6 +2,8 @@
 
 ### Minor Enhancements
 
+  * Strip excess whitespace (#40)
+
 ### Bug Fixes
 
   * Add UTC offset to `<lastmod>` to handle non-UTC timezones (#49)
