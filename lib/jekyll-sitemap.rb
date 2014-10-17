@@ -42,7 +42,7 @@ module Jekyll
       site_map.content = File.read(source_path)
       site_map.data["layout"] = nil
       site_map.render(Hash.new, @site.site_payload)
-      site_map.output
+      site_map.output.gsub(/[\s\n]*\n+/, "\n")
     end
 
     # Checks if a sitemap already exists in the site source
