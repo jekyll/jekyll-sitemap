@@ -1,6 +1,12 @@
 require 'fileutils'
 
 module Jekyll
+  class UnreadPage < Page
+    def read_yaml(*)
+      @data ||= {}
+    end
+  end
+
   class JekyllSitemap < Jekyll::Generator
     safe true
 
@@ -38,7 +44,7 @@ module Jekyll
     end
 
     def sitemap_content
-      site_map = Page.new(@site, File.dirname(__FILE__), "", "sitemap.xml")
+      site_map = UnreadPage.new(@site, File.dirname(__FILE__), "", "sitemap.xml")
       site_map.content = File.read(source_path)
       site_map.data["layout"] = nil
       site_map.render(Hash.new, @site.site_payload)
