@@ -3,6 +3,7 @@
 ### Bug Fixes
 
   * Don't attempt to read the sitemap upon page creation. (#52)
+  * Use new secure methods to build source & dest paths. (#53)
 
 ## 0.6.1 / 2014-10-17
 
