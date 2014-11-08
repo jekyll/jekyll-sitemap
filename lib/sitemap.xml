@@ -33,7 +33,7 @@
   {% for file in site.html_files %}
   <url>
     <loc>{{ site_url }}{{ file.path }}</loc>
-    <lastmod>{{ file.modified_time | date:"%Y-%m-%dT%H:%M:%SZ" }}</lastmod>
+    <lastmod>{{ file.modified_time | date_to_xmlschema }}</lastmod>
     <priority>0.6</priority>
   </url>
   {% endfor %}

@@ -1,8 +1,12 @@
-## HEAD
+## 0.6.1 / 2014-10-17
 
 ### Minor Enhancements
 
+  * Strip excess whitespace (#40)
+
 ### Bug Fixes
+
+  * Add UTC offset to `<lastmod>` to handle non-UTC timezones (#49)
 
 ### Development Fixes
 
