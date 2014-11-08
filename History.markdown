@@ -1,3 +1,9 @@
+## HEAD
+
+### Bug Fixes
+
+  * Don't attempt to read the sitemap upon page creation. (#52)
+
 ## 0.6.1 / 2014-10-17
 
 ### Minor Enhancements
