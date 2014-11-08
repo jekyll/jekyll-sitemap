@@ -28,7 +28,7 @@ module Jekyll
 
     # Destination for sitemap.xml file within the site source directory
     def destination_path
-      File.expand_path "sitemap.xml", @site.dest
+      @site.in_dest_dir("sitemap.xml")
     end
 
     # copy sitemap template from source to destination
@@ -47,7 +47,7 @@ module Jekyll
 
     # Checks if a sitemap already exists in the site source
     def sitemap_exists?
-      File.exists? File.expand_path "sitemap.xml", @site.source
+      File.exists? @site.in_source_dir("sitemap.xml")
     end
   end
 end
