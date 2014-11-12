@@ -34,7 +34,11 @@ module Jekyll
 
     # Destination for sitemap.xml file within the site source directory
     def destination_path
-      @site.in_dest_dir("sitemap.xml")
+      if @site.respond_to?(:in_dest_dir)
+        @site.in_dest_dir("sitemap.xml")
+      else
+        Jekyll.sanitized_path(@site.dest, "sitemap.xml")
+      end
     end
 
     # copy sitemap template from source to destination
@@ -53,7 +57,11 @@ module Jekyll
 
     # Checks if a sitemap already exists in the site source
     def sitemap_exists?
-      File.exists? @site.in_source_dir("sitemap.xml")
+      if @site.respond_to?(:in_source_dir)
+        File.exists? @site.in_source_dir("sitemap.xml")
+      else
+        File.exists? Jekyll.sanitized_path(@site.source, "sitemap.xml")
+      end
     end
   end
 end
