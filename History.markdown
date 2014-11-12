@@ -1,3 +1,9 @@
+## HEAD
+
+## Bug Fixes
+
+  * Be backwards-compatible when `Site#in_source_dir` and `Site#in_dest_dir` don't exist (#57)
+
 ## 0.6.2 / 2014-11-08
 
 ### Bug Fixes
