@@ -1,3 +1,9 @@
+## HEAD
+
+## Development Fixes
+
+  * Remove unnecessary spaces and escaping in README (#58)
+
 ## 0.6.3 / 2014-11-11
 
 ## Bug Fixes
