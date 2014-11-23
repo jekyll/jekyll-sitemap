@@ -24,7 +24,7 @@ include the generated content from the gems. (Programming is *hard*.)
 
 ## Exclusions
 
-If you would like to exclude specific pages/posts from the sitemap set the 
+If you would like to exclude specific pages/posts from the sitemap set the
 sitemap flag to `false` in the front matter for the page/post.
 
 ```yml
@@ -50,7 +50,6 @@ Use `script/console` to load a local IRB console with the Gem.
 4. Submit a pull request
 
 ## Issues
-1. If the `sitemap.xml` doesn't generate in the `\_site` folder ensure `\_config.yml` doesn't have `safe: true`. That prevents all plugins from working.
-2. If the `sitemap.xml` doesn't generate in the `\_site` folder, ensure that you don't have a sitemap generator plugin in your `_plugin` folder.
 
-
+1. If the `sitemap.xml` doesn't generate in the `_site` folder, ensure `_config.yml` doesn't have `safe: true`. That prevents all plugins from working.
+2. If the `sitemap.xml` doesn't generate in the `_site` folder, ensure that you don't have a sitemap generator plugin in your `_plugin` folder.
