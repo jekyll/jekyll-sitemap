@@ -1,5 +1,9 @@
 ## HEAD
 
+## Minor Enhancements
+
+  * Add `site.baseurl` to base site URL construction (#50)
+
 ## Development Fixes
 
   * Remove unnecessary spaces and escaping in README (#58)
