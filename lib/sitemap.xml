@@ -3,7 +3,7 @@
   {% capture site_url %}{% if site.url %}{{ site.url | append: site.baseurl }}{% else %}{{ site.github.url }}{% endif %}{% endcapture %}
   {% for post in site.posts %}{% unless post.sitemap == false %}
   <url>
-    <loc>{{ site_url }}{{ post.url }}</loc>
+    <loc>{{ post.url | prepend: site_url }}</loc>
     {% if post.last_modified_at %}
     <lastmod>{{ post.last_modified_at | date_to_xmlschema }}</lastmod>
     {% else %}
@@ -14,7 +14,7 @@
   {% endunless %}{% endfor %}
   {% for post in site.html_pages %}{% unless post.sitemap == false %}
   <url>
-    <loc>{{ site_url }}{{ post.url | replace:'index.html','' }}</loc>
+    <loc>{{ post.url | replace:'index.html','' | prepend: site_url }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>{% if post.url == "/" or post.url == "/index.html" %}1.0{% else %}0.7{% endif %}</priority>
@@ -23,7 +23,7 @@
   {% for collection in site.collections %}{% unless collection.last.output == false %}
   {% for doc in collection.last.docs %}{% unless doc.sitemap == false %}
   <url>
-    <loc>{{ site_url }}{{ doc.url | replace:'index.html','' }}</loc>
+    <loc>{{ doc.url | replace:'index.html','' | prepend: site_url }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>{% if doc.url == "/" or doc.url == "/index.html" %}1.0{% else %}0.7{% endif %}</priority>
@@ -32,7 +32,7 @@
   {% endunless %}{% endfor %}
   {% for file in site.html_files %}
   <url>
-    <loc>{{ site_url }}{{ file.path }}</loc>
+    <loc>{{ file.path | prepend: site_url }}</loc>
     <lastmod>{{ file.modified_time | date_to_xmlschema }}</lastmod>
     <priority>0.6</priority>
   </url>
