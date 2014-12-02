@@ -1,15 +1,19 @@
 require 'spec_helper'
 
 describe(Jekyll::JekyllSitemap) do
-  let(:config) do
-    Jekyll.configuration({
+  let(:overrides) do
+    {
       "source"      => source_dir,
       "destination" => dest_dir,
       "url"         => "http://example.org",
-      "collections" => { "my_collection" => { "output" => true },
-                         "other_things"  => { "output" => false }
-                       }
-    })
+      "collections" => {
+        "my_collection" => { "output" => true },
+        "other_things"  => { "output" => false }
+      }
+    }
+  end
+  let(:config) do
+    Jekyll.configuration(overrides)
   end
   let(:site)     { Jekyll::Site.new(config) }
   let(:contents) { File.read(dest_dir("sitemap.xml")) }
@@ -83,5 +87,30 @@ describe(Jekyll::JekyllSitemap) do
 
   it "correctly formats timestamps of static files" do
     expect(contents).to match /\/this-is-a-subfile\.html<\/loc>\s+<lastmod>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(-|\+)\d{2}:\d{2}<\/lastmod>/
+  end
+
+  context "with a baseurl" do
+    let(:config) do
+      Jekyll.configuration(Jekyll::Utils.deep_merge_hashes(overrides, {"baseurl" => "/bass"}))
+    end
+
+    it "correctly adds the baseurl to the static files" do
+      expect(contents).to match /<loc>http:\/\/example\.org\/bass\/some-subfolder\/this-is-a-subfile\.html<\/loc>/
+    end
+
+    it "correctly adds the baseurl to the collections" do
+      expect(contents).to match /<loc>http:\/\/example\.org\/bass\/my_collection\/test\.html<\/loc>/
+    end
+
+    it "correctly adds the baseurl to the pages" do
+      expect(contents).to match /<loc>http:\/\/example\.org\/bass\/<\/loc>/
+      expect(contents).to match /<loc>http:\/\/example\.org\/bass\/some-subfolder\/this-is-a-subpage\.html<\/loc>/
+    end
+
+    it "correctly adds the baseurl to the posts" do
+      expect(contents).to match /<loc>http:\/\/example\.org\/bass\/2014\/03\/04\/march-the-fourth\.html<\/loc>/
+      expect(contents).to match /<loc>http:\/\/example\.org\/bass\/2014\/03\/02\/march-the-second\.html<\/loc>/
+      expect(contents).to match /<loc>http:\/\/example\.org\/bass\/2013\/12\/12\/dec-the-second\.html<\/loc>/
+    end
   end
 end
