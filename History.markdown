@@ -1,4 +1,4 @@
-## HEAD
+## 0.7.0 / 2014-12-07
 
 ## Minor Enhancements
 
