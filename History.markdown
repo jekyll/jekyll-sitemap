@@ -2,6 +2,7 @@
 
 ## Minor Enhancements
 
+  * Make `site.baseurl` support more robust (#59)
   * Add `site.baseurl` to base site URL construction (#50)
 
 ## Development Fixes
