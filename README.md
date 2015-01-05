@@ -10,8 +10,7 @@
 2. Add the following to your site's `_config.yml`:
 
 ```yml
-gems:
-  - jekyll-sitemap
+gems: [jekyll-sitemap]
 ```
 
 If all gem plugins have the same `priority`, they will be executed in the
