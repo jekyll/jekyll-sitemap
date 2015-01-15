@@ -12,12 +12,12 @@
     <priority>0.8</priority>
   </url>
   {% endunless %}{% endfor %}
-  {% for post in site.html_pages %}{% unless post.sitemap == false %}
+  {% for page in site.html_pages %}{% unless page.sitemap == false %}
   <url>
-    <loc>{{ post.url | replace:'index.html','' | prepend: site_url }}</loc>
+    <loc>{{ page.url | replace:'index.html','' | prepend: site_url }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>{% if post.url == "/" or post.url == "/index.html" %}1.0{% else %}0.7{% endif %}</priority>
+    <priority>{% if page.url == "/" or page.url == "/index.html" %}1.0{% else %}0.7{% endif %}</priority>
   </url>
   {% endunless %}{% endfor %}
   {% for collection in site.collections %}{% unless collection.last.output == false %}
