@@ -1,6 +1,7 @@
 ## HEAD
 
   * Call each page `page` in pages loop in `sitemap.xml` for clarity (#64)
+  * Remove `changefreq` (#34)
 
 ## 0.7.0 / 2014-12-07
 
