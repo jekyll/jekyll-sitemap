@@ -9,14 +9,12 @@
     {% else %}
     <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
     {% endif %}
-    <priority>0.8</priority>
   </url>
   {% endunless %}{% endfor %}
   {% for page in site.html_pages %}{% unless page.sitemap == false %}
   <url>
     <loc>{{ page.url | replace:'index.html','' | prepend: site_url }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
-    <priority>{% if page.url == "/" or page.url == "/index.html" %}1.0{% else %}0.7{% endif %}</priority>
   </url>
   {% endunless %}{% endfor %}
   {% for collection in site.collections %}{% unless collection.last.output == false %}
@@ -24,7 +22,6 @@
   <url>
     <loc>{{ doc.url | replace:'index.html','' | prepend: site_url }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
-    <priority>{% if doc.url == "/" or doc.url == "/index.html" %}1.0{% else %}0.7{% endif %}</priority>
   </url>
   {% endunless %}{% endfor %}
   {% endunless %}{% endfor %}
@@ -32,7 +29,6 @@
   <url>
     <loc>{{ file.path | prepend: site_url }}</loc>
     <lastmod>{{ file.modified_time | date_to_xmlschema }}</lastmod>
-    <priority>0.6</priority>
   </url>
   {% endfor %}
 </urlset>
