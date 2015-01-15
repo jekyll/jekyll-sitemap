@@ -30,7 +30,7 @@ describe(Jekyll::JekyllSitemap) do
   end
 
   it "sets the base URL for the site as priority 1.0" do
-    expect(contents).to match /<loc>http:\/\/example\.org\/<\/loc>\s+<lastmod>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(-|\+)\d{2}:\d{2}<\/lastmod>\s+<changefreq>weekly<\/changefreq>\s+<priority>1\.0<\/priority>/
+    expect(contents).to match /<loc>http:\/\/example\.org\/<\/loc>\s+<lastmod>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(-|\+)\d{2}:\d{2}<\/lastmod>\s+<priority>1\.0<\/priority>/
   end
 
   it "puts all the pages in the sitemap.xml file" do

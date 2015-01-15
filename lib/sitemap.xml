@@ -16,7 +16,6 @@
   <url>
     <loc>{{ page.url | replace:'index.html','' | prepend: site_url }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
-    <changefreq>weekly</changefreq>
     <priority>{% if page.url == "/" or page.url == "/index.html" %}1.0{% else %}0.7{% endif %}</priority>
   </url>
   {% endunless %}{% endfor %}
@@ -25,7 +24,6 @@
   <url>
     <loc>{{ doc.url | replace:'index.html','' | prepend: site_url }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
-    <changefreq>weekly</changefreq>
     <priority>{% if doc.url == "/" or doc.url == "/index.html" %}1.0{% else %}0.7{% endif %}</priority>
   </url>
   {% endunless %}{% endfor %}
