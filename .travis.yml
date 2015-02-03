@@ -7,3 +7,7 @@ before_script: bundle update
 script: "script/cibuild"
 sudo: false
 cache: bundler
+env:
+  matrix:
+    - JEKYLL_VERSION="~> 2.0"
+    - JEKYLL_VERSION="3.0.0.pre.beta1"
