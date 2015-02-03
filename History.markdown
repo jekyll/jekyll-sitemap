@@ -3,6 +3,7 @@
   * Call each page `page` in pages loop in `sitemap.xml` for clarity (#64)
   * Remove `changefreq` (#34)
   * Remove `priority` (#33)
+  * Don't strip 'index.html' when there is more to filename (#68)
 
 ## 0.7.0 / 2014-12-07
 
