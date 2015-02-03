@@ -34,6 +34,10 @@ describe(Jekyll::JekyllSitemap) do
     expect(contents).to match /<loc>http:\/\/example\.org\/some-subfolder\/this-is-a-subpage\.html<\/loc>/
   end
 
+  it "only strips 'index.html' from end of permalink" do
+    expect(contents).to match /<loc>http:\/\/example\.org\/some-subfolder\/test_index\.html<\/loc>/
+  end
+
   it "puts all the posts in the sitemap.xml file" do
     expect(contents).to match /<loc>http:\/\/example\.org\/2014\/03\/04\/march-the-fourth\.html<\/loc>/
     expect(contents).to match /<loc>http:\/\/example\.org\/2014\/03\/02\/march-the-second\.html<\/loc>/
