@@ -9,6 +9,7 @@ module Jekyll
 
   class JekyllSitemap < Jekyll::Generator
     safe true
+    priority :lowest
 
     # Main plugin action, called by Jekyll-core
     def generate(site)
