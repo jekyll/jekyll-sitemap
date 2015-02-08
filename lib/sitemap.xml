@@ -14,14 +14,18 @@
   {% for page in site.html_pages %}{% unless page.sitemap == false %}
   <url>
     <loc>{{ page.url | replace:'/index.html','/' | prepend: site_url }}</loc>
-    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    {% if page.last_modified_at %}
+    <lastmod>{{ page.last_modified_at | date_to_xmlschema }}</lastmod>
+    {% endif %}
   </url>
   {% endunless %}{% endfor %}
   {% for collection in site.collections %}{% unless collection.last.output == false %}
   {% for doc in collection.last.docs %}{% unless doc.sitemap == false %}
   <url>
     <loc>{{ doc.url | replace:'/index.html','/' | prepend: site_url }}</loc>
-    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    {% if doc.last_modified_at %}
+    <lastmod>{{ doc.last_modified_at | date_to_xmlschema }}</lastmod>
+    {% endif %}
   </url>
   {% endunless %}{% endfor %}
   {% endunless %}{% endfor %}

@@ -1,3 +1,4 @@
 #! /bin/bash
 
 bundle exec rspec
+bundle exec rspec spec/test_jekyll-last-modified-at.rb
