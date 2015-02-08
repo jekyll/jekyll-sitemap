@@ -1,3 +1,7 @@
+## HEAD
+
+  * Do not assume all pages have changed (#35)
+
 ## 0.8.0 / 2015-02-03
 
   * Call each page `page` in pages loop in `sitemap.xml` for clarity (#64)
