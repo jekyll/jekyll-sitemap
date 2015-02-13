@@ -6,7 +6,7 @@
 
 ## Usage
 
-1. Add `gem 'jekyll-sitemap'` to your site's Gemfile
+1. Add `gem 'jekyll-sitemap'` to your site's Gemfile and run `bundle`
 2. Add the following to your site's `_config.yml`:
 
 ```yml
