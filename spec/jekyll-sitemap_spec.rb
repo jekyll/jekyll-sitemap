@@ -29,6 +29,11 @@ describe(Jekyll::JekyllSitemap) do
     expect(File.exist?(dest_dir("sitemap.xml"))).to be_truthy
   end
 
+  it "doesn't have multiple new lines or trailing whitespace" do
+    expect(contents).to_not match /\s+\n/
+    expect(contents).to_not match /\n{2,}/
+  end
+
   it "puts all the pages in the sitemap.xml file" do
     expect(contents).to match /<loc>http:\/\/example\.org\/<\/loc>/
     expect(contents).to match /<loc>http:\/\/example\.org\/some-subfolder\/this-is-a-subpage\.html<\/loc>/
