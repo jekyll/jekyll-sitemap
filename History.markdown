@@ -1,4 +1,4 @@
-## HEAD
+## 0.8.1 / 2015-03-11
 
   * Do not assume all pages have changed (#35)
   * Remove duplicated range from regex (#73)
