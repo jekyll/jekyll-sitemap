@@ -1,6 +1,7 @@
 ## HEAD
 
   * Do not assume all pages have changed (#35)
+  * Remove duplicated range from regex (#73)
 
 ## 0.8.0 / 2015-02-03
 
