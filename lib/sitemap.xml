@@ -37,7 +37,7 @@
     </url>
   {% endunless %}{% endfor %}
   {% endunless %}{% endfor %}
-  {% for file in site.html_files %}
+  {% for file in site.nonsite_files %}
   <url>
     <loc>{{ file.path | prepend: site_url | uri_escape }}</loc>
     <lastmod>{{ file.modified_time | date_to_xmlschema }}</lastmod>

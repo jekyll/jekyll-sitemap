@@ -73,6 +73,14 @@ describe(Jekyll::JekyllSitemap) do
     end
   end
 
+  it "puts all the files with file_extensions into sitemap.xml" do
+    expect(contents).to match /<loc>http:\/\/example\.org\/assets\/foo\.pdf<\/loc>/
+  end
+
+  it "doesn't put files without file_extensions into sitemap.xml" do
+    expect(contents).to_not match /<loc>http:\/\/example\.org\/assets\/bar\.ps<\/loc>/
+  end
+
   it "generates the correct date for each of the posts" do
     expect(contents).to match /<lastmod>2014-03-04T00:00:00(-|\+)\d+:\d+<\/lastmod>/
     expect(contents).to match /<lastmod>2014-03-02T00:00:00(-|\+)\d+:\d+<\/lastmod>/
@@ -106,7 +114,7 @@ describe(Jekyll::JekyllSitemap) do
   end
 
   it "includes the correct number of items" do
-    expect(contents.scan(/(?=<url>)/).count).to eql 15
+    expect(contents.scan(/(?=<url>)/).count).to eql 16
   end
 
   context "with a baseurl" do

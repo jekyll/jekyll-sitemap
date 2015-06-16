@@ -7,3 +7,7 @@ defaults:
       type: page
     values:
       layout: some_default
+
+sitemap:
+    extensions:
+        - .pdf
