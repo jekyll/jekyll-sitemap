@@ -18,7 +18,7 @@ module Jekyll
       begin
           exts = @site.config["sitemap"]["extensions"]
       rescue NameError
-          # safe default - and backward-compatible behaviour
+          # default to .html
           exts = [".html"]
       end
       @site.config["exts_files"]  = exts_files(exts).map(&:to_liquid)
