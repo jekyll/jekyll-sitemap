@@ -31,7 +31,7 @@ module Jekyll
 
     # Array of all non-jekyll site files with given extensions
     def sitemap_static_files (exts=[])
-      @site.static_files.select { |file| exts.include? File.extname(file.relative_path) }
+      @site.static_files.select { |file| exts.include? file.extname() }
     end
 
     # Path to sitemap.xml template file
