@@ -21,7 +21,7 @@ module Jekyll
           # default to .html
           exts = [".html"]
       end
-      @site.config["exts_files"]  = exts_files(exts).map(&:to_liquid)
+      @site.config["sitemap_static_files"]  = sitemap_static_files(exts).map(&:to_liquid)
       unless sitemap_exists?
         write
         @site.keep_files ||= []
@@ -30,7 +30,7 @@ module Jekyll
     end
 
     # Array of all non-jekyll site files with given extensions
-    def exts_files (exts=[])
+    def sitemap_static_files (exts=[])
       @site.static_files.select { |file| exts.include? File.extname(file.relative_path) }
     end
 
