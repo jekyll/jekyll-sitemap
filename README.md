@@ -31,6 +31,9 @@ sitemap flag to `false` in the front matter for the page/post.
 sitemap: false
 ```
 
+Similarly, all pages in a collection can be excluded by setting the sitemap
+flag to `false` in the collection definition in `_config.yaml`.
+
 ## Developing locally
 
 Use `script/bootstrap` to bootstrap your local development environment.
