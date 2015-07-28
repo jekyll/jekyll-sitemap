@@ -19,7 +19,7 @@
     {% endif %}
   </url>
   {% endunless %}{% endfor %}
-  {% for collection in site.collections %}{% unless collection.last.output == false %}
+  {% for collection in site.collections %}{% unless collection.sitemap == false or collection.last.output == false %}
   {% for doc in collection.last.docs %}{% unless doc.sitemap == false %}
   <url>
     <loc>{{ doc.url | replace:'/index.html','/' | prepend: site_url }}</loc>

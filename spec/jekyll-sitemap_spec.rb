@@ -8,7 +8,8 @@ describe(Jekyll::JekyllSitemap) do
       "url"         => "http://example.org",
       "collections" => {
         "my_collection" => { "output" => true },
-        "other_things"  => { "output" => false }
+        "other_things"  => { "output" => false },
+        "unwanted"      => { "sitemap" => false }
       }
     }
   end
@@ -56,6 +57,10 @@ describe(Jekyll::JekyllSitemap) do
 
     it "doesn't put all the `output:false` into sitemap.xml" do
       expect(contents).to_not match /<loc>http:\/\/example\.org\/other_things\/test2\.html<\/loc>/
+    end
+
+    it "doesn't put all the `sitemap:false` into sitemap.xml" do
+      expect(contents).to_not match /<loc>http:\/\/example\.org\/unwanted\/exclude\.html<\/loc>/
     end
 
     it "remove 'index.html' for directory custom permalinks" do
