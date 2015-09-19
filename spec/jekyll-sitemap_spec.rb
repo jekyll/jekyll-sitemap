@@ -71,6 +71,15 @@ describe(Jekyll::JekyllSitemap) do
     it "performs URI encoding of site paths" do
       expect(contents).to match /<loc>http:\/\/example\.org\/this%20url%20has%20an%20%C3%BCmlaut<\/loc>/
     end
+
+    it "puts per-collection tags into sitemap.xml" do
+      expect(contents).to match %r{
+        <loc>http://example\.org/my_collection/collection-sitemap-tags\.html</loc>\s*
+        (<lastmod>[^<]*</lastmod>\s*)?
+        <changefreq>weekly</changefreq>\s*
+        <priority>0\.7</priority>
+      }x
+    end
   end
 
   it "generates the correct date for each of the posts" do
@@ -131,12 +140,30 @@ describe(Jekyll::JekyllSitemap) do
     expect(contents).to match /\/this-is-a-subfile\.html<\/loc>\s+<lastmod>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(-|\+)\d{2}:\d{2}<\/lastmod>/
   end
 
+  it "puts per-post tags into sitemap.xml" do
+    expect(contents).to match %r{
+        <loc>http://example\.org/2017/08/10/post-sitemap-tags\.html</loc>\s*
+        (<lastmod>[^<]*</lastmod>\s*)?
+        <changefreq>monthly</changefreq>\s*
+        <priority>0\.4</priority>
+      }x
+  end
+
+  it "puts per-file tags into sitemap.xml" do
+    expect(contents).to match %r{
+        <loc>http://example\.org/some-subfolder/page-sitemap-tags\.html</loc>\s*
+        (<lastmod>[^<]*</lastmod>\s*)?
+        <changefreq>daily</changefreq>\s*
+        <priority>0\.3</priority>
+      }x
+  end
+
   it "includes the correct number of items" do
     # static_files/excluded.pdf is excluded on Jekyll 3.4.2 and above
     if Gem::Version.new(Jekyll::VERSION) >= Gem::Version.new("3.4.2")
-      expect(contents.scan(%r!(?=<url>)!).count).to eql 20
+      expect(contents.scan(%r!(?=<url>)!).count).to eql 23
     else
-      expect(contents.scan(%r!(?=<url>)!).count).to eql 21
+      expect(contents.scan(%r!(?=<url>)!).count).to eql 24
     end
   end
 

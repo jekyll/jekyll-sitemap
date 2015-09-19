@@ -12,6 +12,9 @@
         {% if doc.last_modified_at or doc.date %}
           <lastmod>{{ doc.last_modified_at | default: doc.date | date_to_xmlschema }}</lastmod>
         {% endif %}
+        {% for tag in doc.sitemap.tags %}
+          <{{ tag[0] }}>{{ tag[1] }}</{{ tag[0] }}>
+        {% endfor %}
       </url>
     {% endfor %}
   {% endfor %}
@@ -23,6 +26,9 @@
       {% if page.last_modified_at %}
         <lastmod>{{ page.last_modified_at | date_to_xmlschema }}</lastmod>
       {% endif %}
+      {% for tag in page.sitemap.tags %}
+        <{{ tag[0] }}>{{ tag[1] }}</{{ tag[0] }}>
+      {% endfor %}
     </url>
   {% endfor %}
 

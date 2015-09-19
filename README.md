@@ -65,6 +65,18 @@ defaults:
       sitemap:         false
 ```
 
+## Per-page/post Tags
+
+If you would like to add tags to specific pages/posts in the sitemap, define
+them in `sitemap.tags` in the front matter for the page/post.
+
+```yml
+sitemap:
+  tags:
+    changefreq: weekly
+    priority: 0.7
+```
+
 ## Override default development settings
 
 [Follow these instructions on Jekyll's documentation](https://jekyllrb.com/docs/usage/#override-default-development-settings).
