@@ -1,4 +1,4 @@
-## HEAD
+## 0.9.0 / 2015-09-21
 
   * Test against Jekyll 2, 3, and the GitHub Pages version. (#83)
 

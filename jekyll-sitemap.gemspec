@@ -3,7 +3,7 @@
 Gem::Specification.new do |spec|
   spec.name        = "jekyll-sitemap"
   spec.summary     = "Automatically generate a sitemap.xml for your Jekyll site."
-  spec.version     = "0.8.1"
+  spec.version     = "0.9.0"
   spec.authors     = ["GitHub, Inc."]
   spec.email       = "support@github.com"
   spec.homepage    = "https://github.com/jekyll/jekyll-sitemap"
