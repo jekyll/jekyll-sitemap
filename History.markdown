@@ -1,3 +1,7 @@
+## HEAD
+
+  * Test against Jekyll 2, 3, and the GitHub Pages version. (#83)
+
 ## 0.8.1 / 2015-03-11
 
   * Do not assume all pages have changed (#35)
