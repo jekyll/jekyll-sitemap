@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'spec_helper'
 
 describe(Jekyll::JekyllSitemap) do
@@ -65,6 +67,10 @@ describe(Jekyll::JekyllSitemap) do
     it "doesn't remove filename for non-directory custom permalinks" do
       expect(contents).to match /<loc>http:\/\/example\.org\/permalink\/unique_name\.html<\/loc>/
     end
+
+    it "performs URI encoding of site paths" do
+      expect(contents).to match /<loc>http:\/\/example\.org\/this%20url%20has%20an%20%C3%BCmlaut<\/loc>/
+    end
   end
 
   it "generates the correct date for each of the posts" do
@@ -116,6 +122,22 @@ describe(Jekyll::JekyllSitemap) do
       expect(contents).to match /<loc>http:\/\/example\.org\/bass\/2014\/03\/04\/march-the-fourth\.html<\/loc>/
       expect(contents).to match /<loc>http:\/\/example\.org\/bass\/2014\/03\/02\/march-the-second\.html<\/loc>/
       expect(contents).to match /<loc>http:\/\/example\.org\/bass\/2013\/12\/12\/dec-the-second\.html<\/loc>/
+    end
+  end
+
+  context "with site url that needs URI encoding" do
+    let(:config) do
+      Jekyll.configuration(Jekyll::Utils.deep_merge_hashes(overrides, {"url" => "http://has ümlaut.org"}))
+    end
+
+    it "performs URI encoding of site url" do
+      expect(contents).to match /<loc>http:\/\/has%20%C3%BCmlaut\.org\/<\/loc>/
+      expect(contents).to match /<loc>http:\/\/has%20%C3%BCmlaut\.org\/some-subfolder\/this-is-a-subpage\.html<\/loc>/
+      expect(contents).to match /<loc>http:\/\/has%20%C3%BCmlaut\.org\/2014\/03\/04\/march-the-fourth\.html<\/loc>/
+    end
+
+    it "does not double-escape site url" do
+      expect(contents).to_not match /%25/
     end
   end
 end
