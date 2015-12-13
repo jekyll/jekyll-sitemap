@@ -100,6 +100,10 @@ describe(Jekyll::JekyllSitemap) do
     expect(contents).to match /\/this-is-a-subfile\.html<\/loc>\s+<lastmod>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(-|\+)\d{2}:\d{2}<\/lastmod>/
   end
 
+  it "includes the correct number of items" do
+    expect(contents.scan(/(?=<url>)/).count).to eql 13
+  end
+
   context "with a baseurl" do
     let(:config) do
       Jekyll.configuration(Jekyll::Utils.deep_merge_hashes(overrides, {"baseurl" => "/bass"}))
