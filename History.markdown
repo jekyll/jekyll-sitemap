@@ -1,6 +1,7 @@
 ## HEAD
 
   * URI encode sitemap URLs (#85)
+  * Do not include 'posts' collection twice (#92)
 
 ## 0.9.0 / 2015-09-21
 
