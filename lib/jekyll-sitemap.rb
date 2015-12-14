@@ -50,7 +50,7 @@ module Jekyll
 
     def sitemap_content
       site_map = PageWithoutAFile.new(@site, File.dirname(__FILE__), "", "sitemap.xml")
-      site_map.content = File.read(source_path)
+      site_map.content = File.read(source_path).strip.gsub(/\s+/,' ').gsub(/[>}]\s+[<{]/){|s| s.gsub(/\s+/,'')}
       site_map.data["layout"] = nil
       site_map.render(Hash.new, @site.site_payload)
       site_map.output.gsub(/\s*\n+/, "\n")

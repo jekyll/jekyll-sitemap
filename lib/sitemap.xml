@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   {% capture site_url %}{% if site.url %}{{ site.url | append: site.baseurl }}{% else %}{{ site.github.url }}{% endif %}{% endcapture %}
+
   {% for post in site.posts %}{% unless post.sitemap == false %}
   <url>
     <loc>{{ post.url | prepend: site_url | uri_escape }}</loc>
@@ -11,6 +12,7 @@
     {% endif %}
   </url>
   {% endunless %}{% endfor %}
+
   {% for page in site.html_pages %}{% unless page.sitemap == false %}
   <url>
     <loc>{{ page.url | replace:'/index.html','/' | prepend: site_url | uri_escape }}</loc>
@@ -19,6 +21,7 @@
     {% endif %}
   </url>
   {% endunless %}{% endfor %}
+
   {% for collection in site.collections %}{% unless collection.last.output == false or collection.output == false or collection.label == 'posts' %}
   {% for doc in collection.last.docs %}{% unless doc.sitemap == false %}
   <url>
@@ -37,10 +40,12 @@
     </url>
   {% endunless %}{% endfor %}
   {% endunless %}{% endfor %}
+
   {% for file in site.html_files %}
   <url>
     <loc>{{ file.path | prepend: site_url | uri_escape }}</loc>
     <lastmod>{{ file.modified_time | date_to_xmlschema }}</lastmod>
   </url>
   {% endfor %}
+
 </urlset>
