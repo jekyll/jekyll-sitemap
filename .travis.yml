@@ -6,6 +6,9 @@ rvm:
 - 2.2
 matrix:
   include:
+    - # GitHub Pages
+      rvm: 2.1.1
+      env: JEKYLL_VERSION=2.4.0
     - rvm: 1.9.3
       env: JEKYLL_VERSION=2.5
 env:
