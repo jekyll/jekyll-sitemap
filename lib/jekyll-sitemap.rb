@@ -23,9 +23,15 @@ module Jekyll
       end
     end
 
+    HTML_EXTENSIONS = %W(
+      .html
+      .xhtml
+      .htm
+    )
+
     # Array of all non-jekyll site files with an HTML extension
     def html_files
-      @site.static_files.select { |file| File.extname(file.relative_path) == ".html" }
+      @site.static_files.select { |file| HTML_EXTENSIONS.include? file.extname }
     end
 
     # Path to sitemap.xml template file

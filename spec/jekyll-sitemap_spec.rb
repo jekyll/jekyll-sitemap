@@ -88,6 +88,11 @@ describe(Jekyll::JekyllSitemap) do
     expect(contents).not_to match /<loc>http:\/\/example\.org\/feeds\/atom\.xml<\/loc>/
   end
 
+  it "does include assets or any static files with .xhtml and .htm extensions" do
+    expect(contents).to match /\/some-subfolder\/xhtml\.xhtml/
+    expect(contents).to match /\/some-subfolder\/htm\.htm/
+  end
+
   it "does not include posts that have set 'sitemap: false'" do
     expect(contents).not_to match /\/exclude-this-post\.html<\/loc>/
   end
@@ -101,7 +106,7 @@ describe(Jekyll::JekyllSitemap) do
   end
 
   it "includes the correct number of items" do
-    expect(contents.scan(/(?=<url>)/).count).to eql 13
+    expect(contents.scan(/(?=<url>)/).count).to eql 15
   end
 
   context "with a baseurl" do
