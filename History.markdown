@@ -4,6 +4,7 @@
   * Do not include 'posts' collection twice (#92)
   * Fix GitHub Pages tests to test just the Jekyll version (#87)
   * Allow HTML files to end with `.xhtml` or `.htm` (#93)
+  * Simplify whitespace regex for stripping whitespace (#96)
 
 ## 0.9.0 / 2015-09-21
 
