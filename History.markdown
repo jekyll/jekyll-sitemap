@@ -1,3 +1,9 @@
+## HEAD
+
+## Development Fixes
+
+  * Add Rubocop (#100)
+
 ## 0.10.0 / 2016-01-05
 
   * URI encode sitemap URLs (#85)
