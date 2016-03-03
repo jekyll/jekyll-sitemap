@@ -27,7 +27,7 @@ module Jekyll
       .html
       .xhtml
       .htm
-    )
+    ).freeze
 
     # Array of all non-jekyll site files with an HTML extension
     def html_files
@@ -65,9 +65,9 @@ module Jekyll
     # Checks if a sitemap already exists in the site source
     def sitemap_exists?
       if @site.respond_to?(:in_source_dir)
-        File.exists? @site.in_source_dir("sitemap.xml")
+        File.exist? @site.in_source_dir("sitemap.xml")
       else
-        File.exists? Jekyll.sanitized_path(@site.source, "sitemap.xml")
+        File.exist? Jekyll.sanitized_path(@site.source, "sitemap.xml")
       end
     end
   end

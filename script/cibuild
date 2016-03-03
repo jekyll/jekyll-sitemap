@@ -3,3 +3,6 @@ set -e
 
 bundle exec rspec
 bundle exec rspec spec/test_jekyll-last-modified-at.rb
+if [ "$JEKYLL_VERSION" = "3.0" ]; then
+  bundle exec rubocop -S -D
+fi
