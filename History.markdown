@@ -1,8 +1,7 @@
 ## HEAD
 
-## Development Fixes
-
   * Add Rubocop (#100)
+  * Properly Escape URLs (#107)
 
 ## 0.10.0 / 2016-01-05
 
@@ -26,22 +25,15 @@
   * Call each page `page` in pages loop in `sitemap.xml` for clarity (#64)
   * Remove `changefreq` (#34)
   * Remove `priority` (#33)
-  * Don't strip 'index.html' when there is more to filename (#68)
+  * Don't strip 'index.html' when there is more to filename ## Minor Enhancements (#68)
 
 ## 0.7.0 / 2014-12-07
 
-## Minor Enhancements
-
   * Make `site.baseurl` support more robust (#59)
-  * Add `site.baseurl` to base site URL construction (#50)
-
-## Development Fixes
-
-  * Remove unnecessary spaces and escaping in README (#58)
+  * Add `site.baseurl` to base site URL construction ## Development Fixes (#50)
+  * Remove unnecessary spaces and escaping in README ## Bug Fixes (#58)
 
 ## 0.6.3 / 2014-11-11
-
-## Bug Fixes
 
   * Be backwards-compatible when `Site#in_source_dir` and `Site#in_dest_dir` don't exist (#57)
 
@@ -90,10 +82,7 @@
 ### Bug Fixes
 
   * Force sitemap layout to be `nil` (#16)
-  * Correct seconds in timestamp for static files (#24)
-
-# Development Fixes
-
+  * Correct seconds in timestamp for static files # Development Fixes (#24)
   * Upgrade to Rspec 3.0 and use `be_truthy` (#24)
 
 ## 0.4.0 / 2014-05-06
