@@ -106,7 +106,7 @@ describe(Jekyll::JekyllSitemap) do
   end
 
   it "includes the correct number of items" do
-    expect(contents.scan(/(?=<url>)/).count).to eql 15
+    expect(contents.scan(/(?=<url>)/).count).to eql 18
   end
 
   context "with a baseurl" do
@@ -134,18 +134,21 @@ describe(Jekyll::JekyllSitemap) do
     end
   end
 
-  context "with site url that needs URI encoding" do
+  context "with urls that needs URI encoding" do
     let(:config) do
-      Jekyll.configuration(Jekyll::Utils.deep_merge_hashes(overrides, {"url" => "http://has ümlaut.org"}))
+      Jekyll.configuration(Jekyll::Utils.deep_merge_hashes(overrides, {"url" => "http://ümlaut.example.org"}))
     end
 
     it "performs URI encoding of site url" do
-      expect(contents).to match /<loc>http:\/\/has%20%C3%BCmlaut\.org\/<\/loc>/
-      expect(contents).to match /<loc>http:\/\/has%20%C3%BCmlaut\.org\/some-subfolder\/this-is-a-subpage\.html<\/loc>/
-      expect(contents).to match /<loc>http:\/\/has%20%C3%BCmlaut\.org\/2014\/03\/04\/march-the-fourth\.html<\/loc>/
+      expect(contents).to match %r!<loc>http://xn--mlaut-jva.example.org/</loc>!
+      expect(contents).to match %r!<loc>http://xn--mlaut-jva.example.org/some-subfolder/this-is-a-subpage.html</loc>!
+      expect(contents).to match %r!<loc>http://xn--mlaut-jva.example.org/2014/03/04/march-the-fourth.html</loc>!
+      expect(contents).to match %r!<loc>http://xn--mlaut-jva.example.org/2016/04/01/%E9%94%99%E8%AF%AF.html</loc>!
+      expect(contents).to match %r!<loc>http://xn--mlaut-jva.example.org/2016/04/02/%E9%94%99%E8%AF%AF.html</loc>!
+      expect(contents).to match %r!<loc>http://xn--mlaut-jva.example.org/2016/04/03/%E9%94%99%E8%AF%AF.html</loc>!
     end
 
-    it "does not double-escape site url" do
+    it "does not double-escape urls" do
       expect(contents).to_not match /%25/
     end
   end
