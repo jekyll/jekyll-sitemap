@@ -2,6 +2,7 @@
 
   * Add Rubocop (#100)
   * Properly Escape URLs (#107)
+  * Include PDF files in sitemap (#109)
 
 ## 0.10.0 / 2016-01-05
 
