@@ -3,7 +3,7 @@
   {% capture site_url %}{% if site.url %}{{ site.url | append: site.baseurl }}{% else %}{{ site.github.url }}{% endif %}{% endcapture %}
   {% for post in site.posts %}{% unless post.sitemap == false %}
   <url>
-    <loc>{{ post.url | prepend: site_url | uri_escape }}</loc>
+    <loc>{{ post.url | prepend: site_url | normalize_url }}</loc>
     {% if post.last_modified_at %}
     <lastmod>{{ post.last_modified_at | date_to_xmlschema }}</lastmod>
     {% else %}
@@ -13,7 +13,7 @@
   {% endunless %}{% endfor %}
   {% for page in site.html_pages %}{% unless page.sitemap == false %}
   <url>
-    <loc>{{ page.url | replace:'/index.html','/' | prepend: site_url | uri_escape }}</loc>
+    <loc>{{ page.url | replace:'/index.html','/' | prepend: site_url | normalize_url }}</loc>
     {% if page.last_modified_at %}
     <lastmod>{{ page.last_modified_at | date_to_xmlschema }}</lastmod>
     {% endif %}
@@ -22,7 +22,7 @@
   {% for collection in site.collections %}{% unless collection.last.output == false or collection.output == false or collection.label == 'posts' %}
   {% for doc in collection.last.docs %}{% unless doc.sitemap == false %}
   <url>
-    <loc>{{ doc.url | replace:'/index.html','/' | prepend: site_url | uri_escape }}</loc>
+    <loc>{{ doc.url | replace:'/index.html','/' | prepend: site_url | normalize_url }}</loc>
     {% if doc.last_modified_at %}
     <lastmod>{{ doc.last_modified_at | date_to_xmlschema }}</lastmod>
     {% endif %}
@@ -30,7 +30,7 @@
   {% endunless %}{% endfor %}
   {% for doc in collection.docs %}{% unless doc.sitemap == false %}
     <url>
-      <loc>{{ doc.url | replace:'/index.html','/' | prepend: site_url | uri_escape }}</loc>
+      <loc>{{ doc.url | replace:'/index.html','/' | prepend: site_url | normalize_url }}</loc>
       {% if doc.last_modified_at %}
       <lastmod>{{ doc.last_modified_at | date_to_xmlschema }}</lastmod>
       {% endif %}
@@ -39,7 +39,7 @@
   {% endunless %}{% endfor %}
   {% for file in site.html_files %}
   <url>
-    <loc>{{ file.path | prepend: site_url | uri_escape }}</loc>
+    <loc>{{ file.path | prepend: site_url | normalize_url }}</loc>
     <lastmod>{{ file.modified_time | date_to_xmlschema }}</lastmod>
   </url>
   {% endfor %}
