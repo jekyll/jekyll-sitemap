@@ -8,7 +8,7 @@ module Jekyll
     # Main plugin action, called by Jekyll-core
     def generate(site)
       @site = site
-      @site.config["time"]         = Time.new
+      @site.config["time"] = Time.new
       @site.config["sitemap_files"] = sitemap_files.map(&:to_liquid)
       unless sitemap_exists?
         write
