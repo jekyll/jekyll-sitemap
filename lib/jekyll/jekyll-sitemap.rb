@@ -8,8 +8,7 @@ module Jekyll
     # Main plugin action, called by Jekyll-core
     def generate(site)
       @site = site
-      @site.config["time"]         = Time.new
-      @site.config["html_files"]   = html_files.map(&:to_liquid)
+      @site.config["time"] = Time.new
       unless sitemap_exists?
         write
         @site.keep_files ||= []
@@ -17,15 +16,16 @@ module Jekyll
       end
     end
 
-    HTML_EXTENSIONS = %W(
+    INCLUDED_EXTENSIONS = %W(
+      .htm
       .html
       .xhtml
-      .htm
+      .pdf
     ).freeze
 
     # Array of all non-jekyll site files with an HTML extension
-    def html_files
-      @site.static_files.select { |file| HTML_EXTENSIONS.include? file.extname }
+    def static_files
+      @site.static_files.select { |file| INCLUDED_EXTENSIONS.include? file.extname }
     end
 
     # Path to sitemap.xml template file
@@ -52,6 +52,7 @@ module Jekyll
       site_map = PageWithoutAFile.new(@site, File.dirname(__FILE__), "", "sitemap.xml")
       site_map.content = File.read(source_path)
       site_map.data["layout"] = nil
+      site_map.data["static_files"] = static_files.map(&:to_liquid)
       site_map.render({}, @site.site_payload)
       site_map.output.gsub(/\s{2,}/, "\n")
     end
