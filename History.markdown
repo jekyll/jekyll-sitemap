@@ -1,6 +1,7 @@
-## HEAD
+## 0.11.0 / 2016-07-08
 
   * Add Rubocop (#100)
+  * Allow Travis to cache dependencies (#108)
   * Properly Escape URLs (#107)
   * Include PDF files in sitemap (#109)
 
