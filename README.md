@@ -22,6 +22,17 @@ those other gems if you *want* the sitemap to include the generated
 content, or *before* those other gems if you *don't want* the sitemap to
 include the generated content from the gems. (Programming is *hard*.)
 
+## Settings
+
+If you'd like the sitemap to go somewhere other than `/sitemap.xml` (for
+example, if you're using a sitemap index), add the location to your
+`_config.yml`:
+
+```yml
+sitemap:
+  location: somewhere/else/sitemap.xml
+```
+
 ## Exclusions
 
 If you would like to exclude specific pages/posts from the sitemap set the

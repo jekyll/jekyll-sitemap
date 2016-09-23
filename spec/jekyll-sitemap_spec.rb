@@ -31,6 +31,15 @@ describe(Jekyll::JekyllSitemap) do
     expect(File.exist?(dest_dir("sitemap.xml"))).to be_truthy
   end
 
+  it "can generate to somewhere other than /sitemap.xml" do
+    site = Jekyll::Site.new(
+      config.merge("sitemap" => { "location" => "other.xml" })
+    )
+    site.process
+
+    expect(File.exist?(dest_dir("other.xml"))).to be_truthy
+  end
+
   it "doesn't have multiple new lines or trailing whitespace" do
     expect(contents).to_not match /\s+\n/
     expect(contents).to_not match /\n{2,}/
