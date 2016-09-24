@@ -3,11 +3,7 @@
   {% for post in site.posts %}{% unless post.sitemap == false %}
   <url>
     <loc>{{ post.url | absolute_url | normalize_url }}</loc>
-    {% if post.last_modified_at %}
-    <lastmod>{{ post.last_modified_at | date_to_xmlschema }}</lastmod>
-    {% else %}
-    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
-    {% endif %}
+    <lastmod>{{ post.last_modified_at | default: post.date | date_to_xmlschema }}</lastmod>
   </url>
   {% endunless %}{% endfor %}
   {% for page in site.html_pages %}{% unless page.sitemap == false %}
