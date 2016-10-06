@@ -3,6 +3,7 @@
 ### Minor Enhancements
 
   * Don't set @site.config["time"] on sitemap generation (#131)
+  * Use filters to clean up Liquid template (#128)
 
 ### Development Fixes
 
