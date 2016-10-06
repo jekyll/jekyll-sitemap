@@ -9,11 +9,10 @@ matrix:
   include:
     - # GitHub Pages
       rvm: 2.3.1
-      env: JEKYLL_VERSION=3.2.0
+      env: JEKYLL_VERSION=3.3.0
 env:
   matrix:
-    - JEKYLL_VERSION=2.5
-    - JEKYLL_VERSION=3.0
+    - JEKYLL_VERSION=3.3
 branches:
   only:
     - master
