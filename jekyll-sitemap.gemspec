@@ -16,7 +16,8 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "addressable", "~>2.4.0"
 
-  spec.add_development_dependency "jekyll", ">= 2.0"
+  spec.add_dependency "jekyll", "~> 3.3"
+
   spec.add_development_dependency "jekyll-last-modified-at", "0.3.4"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "rake"
