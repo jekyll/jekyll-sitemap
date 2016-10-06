@@ -8,6 +8,7 @@
 ### Development Fixes
 
   * Appease Rubocop (#132)
+  * Drop Addressable dependency (#133)
 
 ## 0.11.0 / 2016-07-08
 
