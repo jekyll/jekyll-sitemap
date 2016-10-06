@@ -1,3 +1,9 @@
+## HEAD
+
+### Minor Enhancements
+
+  * Don't set @site.config["time"] on sitemap generation (#131)
+
 ## 0.11.0 / 2016-07-08
 
   * Add Rubocop (#100)
