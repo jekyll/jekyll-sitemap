@@ -1,4 +1,4 @@
-require 'fileutils'
+require "fileutils"
 
 module Jekyll
   class JekyllSitemap < Jekyll::Generator
@@ -44,7 +44,7 @@ module Jekyll
     # copy sitemap template from source to destination
     def write
       FileUtils.mkdir_p File.dirname(destination_path)
-      File.open(destination_path, 'w') { |f| f.write(sitemap_content) }
+      File.open(destination_path, "w") { |f| f.write(sitemap_content) }
     end
 
     def sitemap_content
@@ -53,7 +53,7 @@ module Jekyll
       site_map.data["layout"] = nil
       site_map.data["static_files"] = static_files.map(&:to_liquid)
       site_map.render({}, @site.site_payload)
-      site_map.output.gsub(/\s{2,}/, "\n")
+      site_map.output.gsub(%r!\s{2,}!, "\n")
     end
 
     # Checks if a sitemap already exists in the site source

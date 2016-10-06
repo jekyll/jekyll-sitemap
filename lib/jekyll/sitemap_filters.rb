@@ -1,4 +1,4 @@
-require 'addressable/uri'
+require "addressable/uri"
 
 module Jekyll
   module SitemapFilters
