@@ -42,14 +42,14 @@ Use `script/console` to load a local IRB console with the Gem.
 1. `script/bootstrap`
 2. `script/cibuild`
 
+## Known Issues
+
+1. If the `sitemap.xml` doesn't generate in the `_site` folder, ensure `_config.yml` doesn't have `safe: true`. That prevents all plugins from working.
+2. If the `sitemap.xml` doesn't generate in the `_site` folder, ensure that you don't have a sitemap generator plugin in your `_plugin` folder.
+
 ## Contributing
 
 1. Fork the project
 2. Create a descriptively named feature branch
 3. Add your feature
 4. Submit a pull request
-
-## Issues
-
-1. If the `sitemap.xml` doesn't generate in the `_site` folder, ensure `_config.yml` doesn't have `safe: true`. That prevents all plugins from working.
-2. If the `sitemap.xml` doesn't generate in the `_site` folder, ensure that you don't have a sitemap generator plugin in your `_plugin` folder.
