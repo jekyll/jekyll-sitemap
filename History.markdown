@@ -1,3 +1,9 @@
+## HEAD
+
+### Documentation
+
+  * Fix #134: Rename "Issues" to "Known Issues" (#135)
+
 ## 0.12.0 / 2016-10-06
 
 ### Minor Enhancements
