@@ -1,5 +1,7 @@
 ## HEAD
 
+  * Refactor and add sitemap to `site.pages` (#137)
+
 ### Documentation
 
   * Fix #134: Rename "Issues" to "Known Issues" (#135)
