@@ -3,14 +3,6 @@
   <?xml-stylesheet type="text/xsl" href="{{ "/sitemap.xsl" | absolute_url }}"?>
 {% endif %}
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  {% for page in site.html_pages %}{% unless page.sitemap == false %}
-  <url>
-    <loc>{{ page.url | replace:'/index.html','/' | absolute_url }}</loc>
-    {% if page.last_modified_at %}
-    <lastmod>{{ page.last_modified_at | date_to_xmlschema }}</lastmod>
-    {% endif %}
-  </url>
-  {% endunless %}{% endfor %}
   {% for collection in site.collections %}{% unless collection.output == false %}
   {% for doc in collection.docs %}{% unless doc.sitemap == false %}
     <url>
@@ -21,6 +13,16 @@
     </url>
   {% endunless %}{% endfor %}
   {% endunless %}{% endfor %}
+
+  {% for page in site.html_pages %}{% unless page.sitemap == false %}
+  <url>
+    <loc>{{ page.url | replace:'/index.html','/' | absolute_url }}</loc>
+    {% if page.last_modified_at %}
+    <lastmod>{{ page.last_modified_at | date_to_xmlschema }}</lastmod>
+    {% endif %}
+  </url>
+  {% endunless %}{% endfor %}
+
   {% for file in page.static_files %}
   <url>
     <loc>{{ file.path | absolute_url }}</loc>
