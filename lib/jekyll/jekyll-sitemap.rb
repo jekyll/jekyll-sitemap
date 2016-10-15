@@ -8,12 +8,10 @@ module Jekyll
     # Main plugin action, called by Jekyll-core
     def generate(site)
       @site = site
-      unless sitemap_exists?
-        write
-        @site.keep_files ||= []
-        @site.keep_files << "sitemap.xml"
-      end
+      @site.pages << sitemap unless sitemap_exists?
     end
+
+    private
 
     INCLUDED_EXTENSIONS = %W(
       .htm
@@ -21,6 +19,12 @@ module Jekyll
       .xhtml
       .pdf
     ).freeze
+
+    # Matches all whitespace that follows
+    #   1. A '>' followed by a newline or
+    #   2. A '}' which closes a Liquid tag
+    # We will strip all of this whitespace to minify the template
+    MINIFY_REGEX = %r!(?<=>\n|})\s+!
 
     # Array of all non-jekyll site files with an HTML extension
     def static_files
@@ -34,26 +38,15 @@ module Jekyll
 
     # Destination for sitemap.xml file within the site source directory
     def destination_path
-      if @site.respond_to?(:in_dest_dir)
-        @site.in_dest_dir("sitemap.xml")
-      else
-        Jekyll.sanitized_path(@site.dest, "sitemap.xml")
-      end
+      @site.in_dest_dir("sitemap.xml")
     end
 
-    # copy sitemap template from source to destination
-    def write
-      FileUtils.mkdir_p File.dirname(destination_path)
-      File.open(destination_path, "w") { |f| f.write(sitemap_content) }
-    end
-
-    def sitemap_content
+    def sitemap
       site_map = PageWithoutAFile.new(@site, File.dirname(__FILE__), "", "sitemap.xml")
-      site_map.content = File.read(source_path)
+      site_map.content = File.read(source_path).gsub(MINIFY_REGEX, "")
       site_map.data["layout"] = nil
       site_map.data["static_files"] = static_files.map(&:to_liquid)
-      site_map.render({}, @site.site_payload)
-      site_map.output.gsub(%r!\s{2,}!, "\n")
+      site_map
     end
 
     # Checks if a sitemap already exists in the site source
