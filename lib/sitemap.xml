@@ -17,15 +17,7 @@
     {% endif %}
   </url>
   {% endunless %}{% endfor %}
-  {% for collection in site.collections %}{% unless collection.last.output == false or collection.output == false or collection.label == 'posts' %}
-  {% for doc in collection.last.docs %}{% unless doc.sitemap == false %}
-  <url>
-    <loc>{{ doc.url | replace:'/index.html','/' | absolute_url }}</loc>
-    {% if doc.last_modified_at %}
-    <lastmod>{{ doc.last_modified_at | date_to_xmlschema }}</lastmod>
-    {% endif %}
-  </url>
-  {% endunless %}{% endfor %}
+  {% for collection in site.collections %}{% unless collection.output == false or collection.label == 'posts' %}
   {% for doc in collection.docs %}{% unless doc.sitemap == false %}
     <url>
       <loc>{{ doc.url | replace:'/index.html','/' | absolute_url }}</loc>
