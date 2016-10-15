@@ -3,12 +3,6 @@
   <?xml-stylesheet type="text/xsl" href="{{ "/sitemap.xsl" | absolute_url }}"?>
 {% endif %}
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  {% for post in site.posts %}{% unless post.sitemap == false %}
-  <url>
-    <loc>{{ post.url | absolute_url }}</loc>
-    <lastmod>{{ post.last_modified_at | default: post.date | date_to_xmlschema }}</lastmod>
-  </url>
-  {% endunless %}{% endfor %}
   {% for page in site.html_pages %}{% unless page.sitemap == false %}
   <url>
     <loc>{{ page.url | replace:'/index.html','/' | absolute_url }}</loc>
@@ -17,12 +11,12 @@
     {% endif %}
   </url>
   {% endunless %}{% endfor %}
-  {% for collection in site.collections %}{% unless collection.output == false or collection.label == 'posts' %}
+  {% for collection in site.collections %}{% unless collection.output == false %}
   {% for doc in collection.docs %}{% unless doc.sitemap == false %}
     <url>
       <loc>{{ doc.url | replace:'/index.html','/' | absolute_url }}</loc>
-      {% if doc.last_modified_at %}
-      <lastmod>{{ doc.last_modified_at | date_to_xmlschema }}</lastmod>
+      {% if doc.last_modified_at or doc.date %}
+      <lastmod>{{ doc.last_modified_at | default: doc.date | date_to_xmlschema }}</lastmod>
       {% endif %}
     </url>
   {% endunless %}{% endfor %}
