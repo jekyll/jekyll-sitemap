@@ -22,6 +22,10 @@ those other gems if you *want* the sitemap to include the generated
 content, or *before* those other gems if you *don't want* the sitemap to
 include the generated content from the gems. (Programming is *hard*.)
 
+Because the sitemap is added to `site.pages`, you may have to modify any
+templates that iterate through all pages (for example, to build a menu of
+all of the site's content).
+
 ## Exclusions
 
 If you would like to exclude specific pages/posts from the sitemap set the
