@@ -46,6 +46,7 @@ module Jekyll
       site_map.content = File.read(source_path).gsub(MINIFY_REGEX, "")
       site_map.data["layout"] = nil
       site_map.data["static_files"] = static_files.map(&:to_liquid)
+      site_map.data["xsl"] = File.exist? @site.in_source_dir("sitemap.xsl")
       site_map
     end
 
