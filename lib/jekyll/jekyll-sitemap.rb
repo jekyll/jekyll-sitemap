@@ -8,7 +8,7 @@ module Jekyll
     # Main plugin action, called by Jekyll-core
     def generate(site)
       @site = site
-      @site.pages << sitemap unless sitemap_exists?
+      @site.pages << sitemap unless file_exists?("sitemap.xml")
     end
 
     private
@@ -46,16 +46,16 @@ module Jekyll
       site_map.content = File.read(source_path).gsub(MINIFY_REGEX, "")
       site_map.data["layout"] = nil
       site_map.data["static_files"] = static_files.map(&:to_liquid)
-      site_map.data["xsl"] = File.exist? @site.in_source_dir("sitemap.xsl")
+      site_map.data["xsl"] = file_exists?("sitemap.xsl")
       site_map
     end
 
-    # Checks if a sitemap already exists in the site source
-    def sitemap_exists?
+    # Checks if a file already exists in the site source
+    def file_exists?(file_path)
       if @site.respond_to?(:in_source_dir)
-        File.exist? @site.in_source_dir("sitemap.xml")
+        File.exist? @site.in_source_dir(file_path)
       else
-        File.exist? Jekyll.sanitized_path(@site.source, "sitemap.xml")
+        File.exist? Jekyll.sanitized_path(@site.source, file_path)
       end
     end
   end
