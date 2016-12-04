@@ -7,6 +7,10 @@
   * Fix #134: Rename "Issues" to "Known Issues" (#135)
   * Fix #104: Add explanation in README for <lastmod> tag (#139)
 
+### Minor Enhancements
+
+  * Add sitemap.xsl if exists (#143)
+
 ## 0.12.0 / 2016-10-06
 
 ### Minor Enhancements
