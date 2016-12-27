@@ -9,6 +9,7 @@ module Jekyll
     def generate(site)
       @site = site
       @site.pages << sitemap unless file_exists?("sitemap.xml")
+      @site.pages << robots unless file_exists?("robots.txt")
     end
 
     private
@@ -32,13 +33,13 @@ module Jekyll
     end
 
     # Path to sitemap.xml template file
-    def source_path
-      File.expand_path "../sitemap.xml", File.dirname(__FILE__)
+    def source_path(file = "sitemap.xml")
+      File.expand_path "../#{file}", File.dirname(__FILE__)
     end
 
     # Destination for sitemap.xml file within the site source directory
-    def destination_path
-      @site.in_dest_dir("sitemap.xml")
+    def destination_path(file = "sitemap.xml")
+      @site.in_dest_dir(file)
     end
 
     def sitemap
@@ -48,6 +49,13 @@ module Jekyll
       site_map.data["static_files"] = static_files.map(&:to_liquid)
       site_map.data["xsl"] = file_exists?("sitemap.xsl")
       site_map
+    end
+
+    def robots
+      robots = PageWithoutAFile.new(@site, File.dirname(__FILE__), "", "robots.txt")
+      robots.content = File.read(source_path("robots.txt"))
+      robots.data["layout"] = nil
+      robots
     end
 
     # Checks if a file already exists in the site source
