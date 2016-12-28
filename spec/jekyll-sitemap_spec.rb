@@ -136,6 +136,11 @@ describe(Jekyll::JekyllSitemap) do
       expect(contents).to match /<loc>http:\/\/example\.org\/bass\/2014\/03\/02\/march-the-second\.html<\/loc>/
       expect(contents).to match /<loc>http:\/\/example\.org\/bass\/2013\/12\/12\/dec-the-second\.html<\/loc>/
     end
+
+    it "adds baseurl to robots.txt" do
+      content = File.read(dest_dir("robots.txt"))
+      expect(content).to match("Sitemap: http://example.org/bass/sitemap.xml")
+    end
   end
 
   context "with urls that needs URI encoding" do
@@ -154,6 +159,22 @@ describe(Jekyll::JekyllSitemap) do
 
     it "does not double-escape urls" do
       expect(contents).to_not match /%25/
+    end
+
+    context "readme" do
+      let(:contents) { File.read(dest_dir("robots.txt")) }
+
+      it "has no layout" do
+        expect(contents).not_to match(/\ATHIS IS MY LAYOUT/)
+      end
+
+      it "creates a sitemap.xml file" do
+        expect(File.exist?(dest_dir("robots.txt"))).to be_truthy
+      end
+
+      it "renders liquid" do
+        expect(contents).to match("Sitemap: http://xn--mlaut-jva.example.org/sitemap.xml")
+      end
     end
   end
 end
