@@ -139,7 +139,7 @@ describe(Jekyll::JekyllSitemap) do
 
     it "adds baseurl to robots.txt" do
       content = File.read(dest_dir("robots.txt"))
-      expect(content).to match("Sitemap: /bass/sitemap.xml")
+      expect(content).to match("Sitemap: http://example.org/bass/sitemap.xml")
     end
   end
 
@@ -173,7 +173,7 @@ describe(Jekyll::JekyllSitemap) do
       end
 
       it "renders liquid" do
-        expect(contents).to match("Sitemap: /sitemap.xml")
+        expect(contents).to match("Sitemap: http://xn--mlaut-jva.example.org/sitemap.xml")
       end
     end
   end
