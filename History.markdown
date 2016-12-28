@@ -1,5 +1,6 @@
 ## HEAD
 
+  * Add robots.txt when none exists (#146)
   * Refactor and add sitemap to `site.pages` (#137)
 
 ### Documentation
