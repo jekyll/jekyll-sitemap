@@ -1,17 +1,16 @@
 ## HEAD
 
+### Minor Enhancements
+
+  * Add sitemap.xsl if exists (#143)
   * Add robots.txt when none exists (#146)
   * Refactor and add sitemap to `site.pages` (#137)
-
+  
 ### Documentation
 
   * Fix #134: Rename "Issues" to "Known Issues" (#135)
   * Fix #104: Add explanation in README for <lastmod> tag (#139)
-
-### Minor Enhancements
-
-  * Add sitemap.xsl if exists (#143)
-
+  
 ## 0.12.0 / 2016-10-06
 
 ### Minor Enhancements
