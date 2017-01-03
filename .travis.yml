@@ -16,6 +16,8 @@ env:
 branches:
   only:
     - master
+git:
+  depth: 1000
 install:
 - travis_retry script/bootstrap
 script: script/cibuild
