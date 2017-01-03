@@ -5,6 +5,7 @@
   * Add sitemap.xsl if exists (#143)
   * Add robots.txt when none exists (#146)
   * Refactor and add sitemap to `site.pages` (#137)
+  * DRY in sitemap.xml (#136)
 
 ### Documentation
 
