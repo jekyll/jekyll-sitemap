@@ -11,6 +11,7 @@
 
   * Fix #134: Rename "Issues" to "Known Issues" (#135)
   * Fix #104: Add explanation in README for <lastmod> tag (#139)
+  * Update copyright attribution (#149)
 
 ### Development Fixes
 
