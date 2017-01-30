@@ -42,6 +42,15 @@ sitemap flag to `false` in the front matter for the page/post.
 sitemap: false
 ```
 
+Alternatively, you can add full relative path or file in your \_config.yaml under `exclude_from_sitemap:`.
+
+```yml
+exclude_from_sitemap:
+  - /amp
+  - /foo.pdf
+  - /blog/2017/01/bar.pdf
+```
+
 ## Developing locally
 
 Use `script/bootstrap` to bootstrap your local development environment.

@@ -7,29 +7,62 @@
   {% for collection in collections %}
     {% assign docs = collection.docs | where_exp:'doc','doc.sitemap != false' %}
     {% for doc in docs %}
-      <url>
-        <loc>{{ doc.url | replace:'/index.html','/' | absolute_url }}</loc>
-        {% if doc.last_modified_at or doc.date %}
-          <lastmod>{{ doc.last_modified_at | default: doc.date | date_to_xmlschema }}</lastmod>
+      {% assign include_url = true %}
+      {% for exclude_from in site.exclude_from_sitemap %}
+        {% assign exclude_from_size = exclude_from | size %}
+        {% assign truncated_url = doc.url | truncate: exclude_from_size, "" %}
+        {% if truncated_url == exclude_from %}
+          {% assign include_url = false %}
+          {% break %}
         {% endif %}
-      </url>
+      {% endfor %}
+      {% if include_url == true %}
+        <url>
+          <loc>{{ doc.url | replace:'/index.html','/' | absolute_url }}</loc>
+          {% if doc.last_modified_at or doc.date %}
+            <lastmod>{{ doc.last_modified_at | default: doc.date | date_to_xmlschema }}</lastmod>
+          {% endif %}
+        </url>
+      {% endif %}
     {% endfor %}
   {% endfor %}
 
   {% assign pages = site.html_pages | where_exp:'doc','doc.sitemap != false' %}
   {% for page in pages %}
-    <url>
-      <loc>{{ page.url | replace:'/index.html','/' | absolute_url }}</loc>
-      {% if page.last_modified_at %}
-        <lastmod>{{ page.last_modified_at | date_to_xmlschema }}</lastmod>
+    {% assign include_url = true %}
+    {% for exclude_from in site.exclude_from_sitemap %}
+      {% assign exclude_from_size = exclude_from | size %}
+      {% assign truncated_url = page.url | truncate: exclude_from_size, "" %}
+      {% if truncated_url == exclude_from %}
+        {% assign include_url = false %}
+        {% break %}
       {% endif %}
-    </url>
+    {% endfor %}
+    {% if include_url == true %}
+      <url>
+        <loc>{{ page.url | replace:'/index.html','/' | absolute_url }}</loc>
+        {% if page.last_modified_at %}
+          <lastmod>{{ page.last_modified_at | date_to_xmlschema }}</lastmod>
+        {% endif %}
+      </url>
+    {% endif %}
   {% endfor %}
 
   {% for file in page.static_files %}
-    <url>
-      <loc>{{ file.path | absolute_url }}</loc>
-      <lastmod>{{ file.modified_time | date_to_xmlschema }}</lastmod>
-    </url>
+    {% assign include_url = true %}
+    {% for exclude_from in site.exclude_from_sitemap %}
+      {% assign exclude_from_size = exclude_from | size %}
+      {% assign truncated_path = file.path | truncate: exclude_from_size, "" %}
+      {% if truncated_path == exclude_from %}
+        {% assign include_url = false %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    {% if include_url == true %}
+      <url>
+        <loc>{{ file.path | absolute_url }}</loc>
+        <lastmod>{{ file.modified_time | date_to_xmlschema }}</lastmod>
+      </url>
+    {% endif %}
   {% endfor %}
 </urlset>
