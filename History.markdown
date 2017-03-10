@@ -1,3 +1,9 @@
+## HEAD
+
+### Minor Enhancements
+
+  * escape& (#162)
+
 ## 1.0.0 / 2017-01-06
 
   * No new changes
