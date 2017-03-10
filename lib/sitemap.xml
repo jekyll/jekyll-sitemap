@@ -8,7 +8,7 @@
     {% assign docs = collection.docs | where_exp:'doc','doc.sitemap != false' %}
     {% for doc in docs %}
       <url>
-        <loc>{{ doc.url | replace:'/index.html','/' | absolute_url }}</loc>
+        <loc>{{ doc.url | replace:'/index.html','/' | absolute_url | xml_escape }}</loc>
         {% if doc.last_modified_at or doc.date %}
           <lastmod>{{ doc.last_modified_at | default: doc.date | date_to_xmlschema }}</lastmod>
         {% endif %}
@@ -19,7 +19,7 @@
   {% assign pages = site.html_pages | where_exp:'doc','doc.sitemap != false' %}
   {% for page in pages %}
     <url>
-      <loc>{{ page.url | replace:'/index.html','/' | absolute_url }}</loc>
+      <loc>{{ page.url | replace:'/index.html','/' | absolute_url | xml_escape }}</loc>
       {% if page.last_modified_at %}
         <lastmod>{{ page.last_modified_at | date_to_xmlschema }}</lastmod>
       {% endif %}
@@ -28,7 +28,7 @@
 
   {% for file in page.static_files %}
     <url>
-      <loc>{{ file.path | absolute_url }}</loc>
+      <loc>{{ file.path | absolute_url | xml_escape }}</loc>
       <lastmod>{{ file.modified_time | date_to_xmlschema }}</lastmod>
     </url>
   {% endfor %}
