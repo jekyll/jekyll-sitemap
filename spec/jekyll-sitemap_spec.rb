@@ -11,7 +11,10 @@ describe(Jekyll::JekyllSitemap) do
       "collections" => {
         "my_collection" => { "output" => true },
         "other_things"  => { "output" => false }
-      }
+      },
+      "defaults"    => [
+        { "scope" => { "path" => "static_files/excluded_pdf" }, "values" => { "sitemap" => false }}
+      ]
     }
   end
   let(:config) do
@@ -95,6 +98,10 @@ describe(Jekyll::JekyllSitemap) do
 
   it "does include assets or any static files with .pdf extension" do
     expect(contents).to match %r!/static_files/test.pdf!
+  end
+
+  it "does not include assets or any static files with .pdf extension that were excluded by defaults" do
+    expect(contents).not_to match %r!/static_files/excluded_pdf/test.pdf!
   end
 
   it "does not include posts that have set 'sitemap: false'" do
