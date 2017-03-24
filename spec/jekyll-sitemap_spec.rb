@@ -105,6 +105,10 @@ describe(Jekyll::JekyllSitemap) do
     expect(contents).not_to match /\/exclude-this-page\.html<\/loc>/
   end
 
+  it "does not include the 404 page" do
+    expect(contents).not_to match /\/404\.html<\/loc>/
+  end
+
   it "correctly formats timestamps of static files" do
     expect(contents).to match /\/this-is-a-subfile\.html<\/loc>\s+<lastmod>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(-|\+)\d{2}:\d{2}<\/lastmod>/
   end
