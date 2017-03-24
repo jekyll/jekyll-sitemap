@@ -97,12 +97,20 @@ describe(Jekyll::JekyllSitemap) do
     expect(contents).to match %r!/static_files/test.pdf!
   end
 
+  it "does not include any static files named 404.html" do
+    expect(contents).not_to match %r!/static_files/404.html!
+  end
+
   it "does not include posts that have set 'sitemap: false'" do
     expect(contents).not_to match /\/exclude-this-post\.html<\/loc>/
   end
 
   it "does not include pages that have set 'sitemap: false'" do
     expect(contents).not_to match /\/exclude-this-page\.html<\/loc>/
+  end
+
+  it "does not include the 404 page" do
+    expect(contents).not_to match /\/404\.html<\/loc>/
   end
 
   it "correctly formats timestamps of static files" do
