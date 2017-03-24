@@ -3,6 +3,7 @@
 ### Minor Enhancements
 
   * escape& (#162)
+  * feat: remove 404 pages from the sitemap. closes #113 (#164)
 
 ## 1.0.0 / 2017-01-06
 
