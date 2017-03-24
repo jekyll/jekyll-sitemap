@@ -28,7 +28,6 @@
 
   {% assign static_files = page.static_files | where_exp:'page','page.name != "404.html"' %}
   {% for file in static_files %}
-    {{ page.path }}
     <url>
       <loc>{{ file.path | absolute_url | xml_escape }}</loc>
       <lastmod>{{ file.modified_time | date_to_xmlschema }}</lastmod>
