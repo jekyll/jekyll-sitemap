@@ -93,7 +93,7 @@ describe(Jekyll::JekyllSitemap) do
     expect(contents).to match /\/some-subfolder\/htm\.htm/
   end
 
-  it "does include assets any static files with .pdf extension" do
+  it "does include assets or any static files with .pdf extension" do
     expect(contents).to match %r!/static_files/test.pdf!
   end
 
