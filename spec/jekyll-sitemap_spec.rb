@@ -93,8 +93,12 @@ describe(Jekyll::JekyllSitemap) do
     expect(contents).to match /\/some-subfolder\/htm\.htm/
   end
 
-  it "does include assets or any static files with .pdf extension" do
+  it "does include assets any static files with .pdf extension" do
     expect(contents).to match %r!/static_files/test.pdf!
+  end
+
+  it "does not include any static files named 404.html" do
+    expect(contents).not_to match %r!/static_files/404.html!
   end
 
   it "does not include posts that have set 'sitemap: false'" do
