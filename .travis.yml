@@ -16,6 +16,7 @@ env:
 branches:
   only:
   - master
+  - /^v\d+\.\d+\.\d+/
 git:
   depth: 1000
 install:
