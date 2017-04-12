@@ -101,6 +101,10 @@ describe(Jekyll::JekyllSitemap) do
     expect(contents).not_to match %r!/static_files/404.html!
   end
 
+  it "does not include any static files that have set 'sitemap: false'" do
+    expect(contents).not_to match %r!/static_files/excluded\.pdf!
+  end
+
   it "does not include posts that have set 'sitemap: false'" do
     expect(contents).not_to match /\/exclude-this-post\.html<\/loc>/
   end
