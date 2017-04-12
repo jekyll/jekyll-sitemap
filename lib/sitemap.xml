@@ -26,7 +26,7 @@
     </url>
   {% endfor %}
 
-  {% assign static_files = page.static_files | where_exp:'page','page.name != "404.html"' %}
+  {% assign static_files = page.static_files | where_exp:'page','page.sitemap != false' | where_exp:'page','page.name != "404.html"' %}
   {% for file in static_files %}
     <url>
       <loc>{{ file.path | absolute_url | xml_escape }}</loc>
