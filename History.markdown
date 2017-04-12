@@ -1,3 +1,9 @@
+## HEAD
+
+### Minor Enhancements
+
+  * Remove excluded static files from the sitemap (#166)
+
 ## 1.1.1 / 2017-04-11
 
   * Cut a new version to alleviate sha256 checksum issue on RubyGems.org (#165)
