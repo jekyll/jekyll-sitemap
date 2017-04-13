@@ -101,8 +101,10 @@ describe(Jekyll::JekyllSitemap) do
     expect(contents).not_to match %r!/static_files/404.html!
   end
 
-  it "does not include any static files that have set 'sitemap: false'" do
-    expect(contents).not_to match %r!/static_files/excluded\.pdf!
+  if Gem::Version.new(Jekyll::VERSION) >= Gem::Version.new('3.4.2')
+    it "does not include any static files that have set 'sitemap: false'" do
+      expect(contents).not_to match %r!/static_files/excluded\.pdf!
+    end
   end
 
   it "does not include posts that have set 'sitemap: false'" do
@@ -122,7 +124,12 @@ describe(Jekyll::JekyllSitemap) do
   end
 
   it "includes the correct number of items" do
-    expect(contents.scan(/(?=<url>)/).count).to eql 19
+    # static_files/excluded.pdf is excluded on Jekyll 3.4.2 and above
+    if Gem::Version.new(Jekyll::VERSION) >= Gem::Version.new('3.4.2')
+      expect(contents.scan(/(?=<url>)/).count).to eql 19
+    else
+      expect(contents.scan(/(?=<url>)/).count).to eql 20
+    end
   end
 
   context "with a baseurl" do
