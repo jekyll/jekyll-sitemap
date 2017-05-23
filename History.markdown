@@ -4,6 +4,10 @@
 
   * Remove excluded static files from the sitemap (#166)
 
+### Development Fixes
+
+  * Condition the static file tests on Jekyll 3.4.2 and above (#167)
+
 ## 1.1.1 / 2017-04-11
 
   * Cut a new version to alleviate sha256 checksum issue on RubyGems.org (#165)
