@@ -3,6 +3,7 @@
 ### Minor Enhancements
 
   * Remove excluded static files from the sitemap (#166)
+  * filter/replace static index.html paths to permalink (#170)
 
 ### Development Fixes
 
