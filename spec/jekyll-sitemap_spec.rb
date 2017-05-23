@@ -130,9 +130,9 @@ describe(Jekyll::JekyllSitemap) do
   it "includes the correct number of items" do
     # static_files/excluded.pdf is excluded on Jekyll 3.4.2 and above
     if Gem::Version.new(Jekyll::VERSION) >= Gem::Version.new('3.4.2')
-      expect(contents.scan(/(?=<url>)/).count).to eql 19
-    else
       expect(contents.scan(/(?=<url>)/).count).to eql 20
+    else
+      expect(contents.scan(/(?=<url>)/).count).to eql 21
     end
   end
 
