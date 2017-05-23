@@ -88,6 +88,10 @@ describe(Jekyll::JekyllSitemap) do
     expect(contents).not_to match /<loc>http:\/\/example\.org\/feeds\/atom\.xml<\/loc>/
   end
 
+  it "converts static index.html files to permalink version" do
+    expect(contents).to match /<loc>http:\/\/example\.org\/some-subfolder\/<\/loc>/
+  end
+
   it "does include assets or any static files with .xhtml and .htm extensions" do
     expect(contents).to match /\/some-subfolder\/xhtml\.xhtml/
     expect(contents).to match /\/some-subfolder\/htm\.htm/
@@ -126,9 +130,9 @@ describe(Jekyll::JekyllSitemap) do
   it "includes the correct number of items" do
     # static_files/excluded.pdf is excluded on Jekyll 3.4.2 and above
     if Gem::Version.new(Jekyll::VERSION) >= Gem::Version.new('3.4.2')
-      expect(contents.scan(/(?=<url>)/).count).to eql 19
-    else
       expect(contents.scan(/(?=<url>)/).count).to eql 20
+    else
+      expect(contents.scan(/(?=<url>)/).count).to eql 21
     end
   end
 
