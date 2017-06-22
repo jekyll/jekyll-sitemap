@@ -13,10 +13,13 @@ matrix:
     env:
     - JEKYLL_VERSION=3.4.3
     - GITHUB_PAGES=1 # Only set on one build in matrix
+  allow_failures:
+  - env: JEKYLL_VERSION=3.5
 env:
   matrix:
   - JEKYLL_VERSION=3.3.0
-  - JEKYLL_VERSION=3.4
+  - JEKYLL_VERSION=3.4.0
+  - JEKYLL_VERSION=3.5
 branches:
   only:
   - master
