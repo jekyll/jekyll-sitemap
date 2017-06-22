@@ -10,7 +10,9 @@ matrix:
   include:
   # GitHub Pages
   - rvm: 2.4.0
-    env: JEKYLL_VERSION=3.4.3
+    env:
+    - JEKYLL_VERSION=3.4.3
+    - GITHUB_PAGES=1 # Only set on one build in matrix
 env:
   matrix:
   - JEKYLL_VERSION=3.3.0
@@ -43,3 +45,4 @@ deploy:
   on:
     tags: true
     repo: jekyll/jekyll-sitemap
+    condition: "$GITHUB_PAGES == 1"
