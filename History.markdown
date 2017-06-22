@@ -9,6 +9,7 @@
 
   * Condition the static file tests on Jekyll 3.4.2 and above (#167)
   * Update versions for Travis (#174)
+  * Fix Travis Deploy (#173)
 
 ## 1.1.1 / 2017-04-11
 
