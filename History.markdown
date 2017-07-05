@@ -12,6 +12,10 @@
   * Fix Travis Deploy (#173)
   * Test against Jekyll 3.4.x *and* latest 3.x (#177)
 
+### Documentation
+
+  * Add note about use with Github Pages gem (#179)
+
 ## 1.1.1 / 2017-04-11
 
   * Cut a new version to alleviate sha256 checksum issue on RubyGems.org (#165)
