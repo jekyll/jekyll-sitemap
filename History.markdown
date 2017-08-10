@@ -15,6 +15,7 @@
 ### Documentation
 
   * Add note about use with Github Pages gem (#179)
+  * Fix a couple of typos (#184)
 
 ## 1.1.1 / 2017-04-11
 
