@@ -35,8 +35,8 @@ When building a site that uses the Github Pages gem, follow the instructions abo
 The `<lastmod>` tag in the `sitemap.xml` will reflect by priority:
 
 1.   The modified date of the file as reported by the filesystem if you have `jekyll-last-modified-at` plugin installed (not compatible with Github Pages auto building)
-2.   A personnalised date if you add the variable `last_modified_at:` with a date in the Front Matter
-3.   The creation date of your post (correspondig to the `post.date` variable)
+2.   A personalised date if you add the variable `last_modified_at:` with a date in the Front Matter
+3.   The creation date of your post (corresponding to the `post.date` variable)
 
 ## Exclusions
 
