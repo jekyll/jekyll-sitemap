@@ -10,7 +10,7 @@
 2. Add the following to your site's `_config.yml`:
 
 ```yml
-gems:
+plugins:
   - jekyll-sitemap
 ```
 
