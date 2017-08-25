@@ -1,5 +1,7 @@
 ## HEAD
 
+  * Define path with __dir__ (#186)
+
 ### Minor Enhancements
 
   * Remove excluded static files from the sitemap (#166)
