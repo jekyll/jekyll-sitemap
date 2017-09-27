@@ -47,6 +47,15 @@ sitemap flag to `false` in the front matter for the page/post.
 sitemap: false
 ```
 
+## Override default development settings
+
+[Since Jekyll 3.3 default URL is set to http://localhost:4000 in development environment](https://jekyllrb.com/news/2016/10/06/jekyll-3-3-is-here/#3-siteurl-is-set-by-the-development-server).
+
+If you need to build for your production environment then you should:
+
+1. Set your production URL in `_config.yml` e.g. `url: https://example.com`.
+2. Build for production with `JEKYLL_ENV=production bundle exec jekyll build`.
+
 ## Developing locally
 
 Use `script/bootstrap` to bootstrap your local development environment.
