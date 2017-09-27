@@ -47,6 +47,19 @@ sitemap flag to `false` in the front matter for the page/post.
 sitemap: false
 ```
 
+If you want to exclude entire directories or many files at once, use [Jekyll's front matter defaults](https://jekyllrb.com/docs/configuration/#front-matter-defaults) in your `_config.yml`.
+
+For instance, if you don't want your PDF files to be indexed you can write:
+
+```yml
+defaults:
+  -
+    scope:
+      path: "pdfs/"
+    values:
+      sitemap: false
+```
+
 ## Developing locally
 
 Use `script/bootstrap` to bootstrap your local development environment.
