@@ -55,7 +55,7 @@ For instance, if you don't want your PDF files to be indexed you can write:
 defaults:
   -
     scope:
-      path: "pdfs/"
+      path: "pdfs"
     values:
       sitemap: false
 ```
