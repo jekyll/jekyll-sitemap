@@ -19,6 +19,7 @@
   * Add note about use with Github Pages gem (#179)
   * Fix a couple of typos (#184)
   * Use plugins instead of gems in README config (#185)
+  * Docs: set site.url in config (#172)
 
 ## 1.1.1 / 2017-04-11
 
