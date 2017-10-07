@@ -1,5 +1,7 @@
 ## HEAD
 
+  * Define path with __dir__ (#186)
+
 ### Minor Enhancements
 
   * Remove excluded static files from the sitemap (#166)
@@ -8,6 +10,15 @@
 ### Development Fixes
 
   * Condition the static file tests on Jekyll 3.4.2 and above (#167)
+  * Update versions for Travis (#174)
+  * Fix Travis Deploy (#173)
+  * Test against Jekyll 3.4.x *and* latest 3.x (#177)
+
+### Documentation
+
+  * Add note about use with Github Pages gem (#179)
+  * Fix a couple of typos (#184)
+  * Use plugins instead of gems in README config (#185)
 
 ## 1.1.1 / 2017-04-11
 

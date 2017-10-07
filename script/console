@@ -1,7 +1,7 @@
 #! /usr/bin/env ruby
 
 def relative_to_root(path)
-  File.expand_path(path, File.dirname(File.dirname(__FILE__)))
+  File.expand_path(path, File.dirname(__dir__))
 end
 
 require 'jekyll'

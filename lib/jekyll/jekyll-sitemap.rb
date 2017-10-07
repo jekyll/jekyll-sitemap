@@ -34,7 +34,7 @@ module Jekyll
 
     # Path to sitemap.xml template file
     def source_path(file = "sitemap.xml")
-      File.expand_path "../#{file}", File.dirname(__FILE__)
+      File.expand_path "../#{file}", __dir__
     end
 
     # Destination for sitemap.xml file within the site source directory
@@ -43,7 +43,7 @@ module Jekyll
     end
 
     def sitemap
-      site_map = PageWithoutAFile.new(@site, File.dirname(__FILE__), "", "sitemap.xml")
+      site_map = PageWithoutAFile.new(@site, __dir__, "", "sitemap.xml")
       site_map.content = File.read(source_path).gsub(MINIFY_REGEX, "")
       site_map.data["layout"] = nil
       site_map.data["static_files"] = static_files.map(&:to_liquid)
@@ -52,7 +52,7 @@ module Jekyll
     end
 
     def robots
-      robots = PageWithoutAFile.new(@site, File.dirname(__FILE__), "", "robots.txt")
+      robots = PageWithoutAFile.new(@site, __dir__, "", "robots.txt")
       robots.content = File.read(source_path("robots.txt"))
       robots.data["layout"] = nil
       robots

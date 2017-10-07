@@ -2,18 +2,24 @@ sudo: false
 language: ruby
 cache: bundler
 rvm:
-- 2.0
 - 2.1
 - 2.2
+- 2.3
+- 2.4
 matrix:
   include:
   # GitHub Pages
-  - rvm: 2.3.3
-    env: JEKYLL_VERSION=3.4.3
+  - rvm: 2.4.0
+    env:
+    - JEKYLL_VERSION=3.4.3
+    - GITHUB_PAGES=1 # Only set on one build in matrix
+  allow_failures:
+  - env: JEKYLL_VERSION=3.5
 env:
   matrix:
   - JEKYLL_VERSION=3.3.0
-  - JEKYLL_VERSION=3.4
+  - JEKYLL_VERSION=3.4.0
+  - JEKYLL_VERSION=3.5
 branches:
   only:
   - master
@@ -42,3 +48,4 @@ deploy:
   on:
     tags: true
     repo: jekyll/jekyll-sitemap
+    condition: "$GITHUB_PAGES == 1"
