@@ -30,7 +30,9 @@ all of the site's content).
 ## Note on Use with Github Pages Gem
 The Github Pages gem ignores all plugins included in the Gemfile. If you only include `jekyll-sitemap` in the Gemfile without also including it in the `_config.yml` *the plugin will not work*. This can be confusing because the official Jekyll docs state that plugins can be included in either the Gemfile or `_config.yml`.
 
-When building a site that uses the Github Pages gem, follow the instructions above and ensure that `jekyll-sitemap` is listed in the `gems` array in `_config.yml`.
+When building a site that uses the Github Pages gem, follow the instructions above and ensure that `jekyll-sitemap` is listed in the `plugins` array in `_config.yml`.
+
+:warning: If you are using Jekyll < 3.5.0 use the `gems` key instead of `plugins`.
 
 ## `<lastmod>` tag
 The `<lastmod>` tag in the `sitemap.xml` will reflect by priority:
