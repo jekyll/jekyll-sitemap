@@ -11,15 +11,15 @@ matrix:
   # GitHub Pages
   - rvm: 2.4.0
     env:
-    - JEKYLL_VERSION=3.4.3
+    - JEKYLL_VERSION=3.6.2
     - GITHUB_PAGES=1 # Only set on one build in matrix
   allow_failures:
   - env: JEKYLL_VERSION=3.5
 env:
   matrix:
-  - JEKYLL_VERSION=3.3.0
   - JEKYLL_VERSION=3.4.0
-  - JEKYLL_VERSION=3.5
+  - JEKYLL_VERSION=3.5.0
+  - JEKYLL_VERSION=3.6
 branches:
   only:
   - master
