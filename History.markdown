@@ -13,12 +13,14 @@
   * Update versions for Travis (#174)
   * Fix Travis Deploy (#173)
   * Test against Jekyll 3.4.x *and* latest 3.x (#177)
+  * Style: Rubocop auto-correct (#195)
 
 ### Documentation
 
   * Add note about use with Github Pages gem (#179)
   * Fix a couple of typos (#184)
   * Use plugins instead of gems in README config (#185)
+  * Docs: set site.url in config (#172)
 
 ## 1.1.1 / 2017-04-11
 

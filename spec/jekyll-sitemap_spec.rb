@@ -1,6 +1,6 @@
-# encoding: UTF-8
+# frozen_string_literal: true
 
-require 'spec_helper'
+require "spec_helper"
 
 describe(Jekyll::JekyllSitemap) do
   let(:overrides) do
@@ -10,8 +10,8 @@ describe(Jekyll::JekyllSitemap) do
       "url"         => "http://example.org",
       "collections" => {
         "my_collection" => { "output" => true },
-        "other_things"  => { "output" => false }
-      }
+        "other_things"  => { "output" => false },
+      },
     }
   end
   let(:config) do
@@ -24,7 +24,7 @@ describe(Jekyll::JekyllSitemap) do
   end
 
   it "has no layout" do
-    expect(contents).not_to match(/\ATHIS IS MY LAYOUT/)
+    expect(contents).not_to match(%r!\ATHIS IS MY LAYOUT!)
   end
 
   it "creates a sitemap.xml file" do
@@ -32,8 +32,8 @@ describe(Jekyll::JekyllSitemap) do
   end
 
   it "doesn't have multiple new lines or trailing whitespace" do
-    expect(contents).to_not match /\s+\n/
-    expect(contents).to_not match /\n{2,}/
+    expect(contents).to_not match %r!\s+\n!
+    expect(contents).to_not match %r!\n{2,}!
   end
 
   it "puts all the pages in the sitemap.xml file" do
@@ -105,7 +105,7 @@ describe(Jekyll::JekyllSitemap) do
     expect(contents).not_to match %r!/static_files/404.html!
   end
 
-  if Gem::Version.new(Jekyll::VERSION) >= Gem::Version.new('3.4.2')
+  if Gem::Version.new(Jekyll::VERSION) >= Gem::Version.new("3.4.2")
     it "does not include any static files that have set 'sitemap: false'" do
       expect(contents).not_to match %r!/static_files/excluded\.pdf!
     end
@@ -129,16 +129,16 @@ describe(Jekyll::JekyllSitemap) do
 
   it "includes the correct number of items" do
     # static_files/excluded.pdf is excluded on Jekyll 3.4.2 and above
-    if Gem::Version.new(Jekyll::VERSION) >= Gem::Version.new('3.4.2')
-      expect(contents.scan(/(?=<url>)/).count).to eql 20
+    if Gem::Version.new(Jekyll::VERSION) >= Gem::Version.new("3.4.2")
+      expect(contents.scan(%r!(?=<url>)!).count).to eql 20
     else
-      expect(contents.scan(/(?=<url>)/).count).to eql 21
+      expect(contents.scan(%r!(?=<url>)!).count).to eql 21
     end
   end
 
   context "with a baseurl" do
     let(:config) do
-      Jekyll.configuration(Jekyll::Utils.deep_merge_hashes(overrides, {"baseurl" => "/bass"}))
+      Jekyll.configuration(Jekyll::Utils.deep_merge_hashes(overrides, { "baseurl" => "/bass" }))
     end
 
     it "correctly adds the baseurl to the static files" do
@@ -168,7 +168,7 @@ describe(Jekyll::JekyllSitemap) do
 
   context "with urls that needs URI encoding" do
     let(:config) do
-      Jekyll.configuration(Jekyll::Utils.deep_merge_hashes(overrides, {"url" => "http://ümlaut.example.org"}))
+      Jekyll.configuration(Jekyll::Utils.deep_merge_hashes(overrides, { "url" => "http://ümlaut.example.org" }))
     end
 
     it "performs URI encoding of site url" do
@@ -181,14 +181,14 @@ describe(Jekyll::JekyllSitemap) do
     end
 
     it "does not double-escape urls" do
-      expect(contents).to_not match /%25/
+      expect(contents).to_not match %r!%25!
     end
 
     context "readme" do
       let(:contents) { File.read(dest_dir("robots.txt")) }
 
       it "has no layout" do
-        expect(contents).not_to match(/\ATHIS IS MY LAYOUT/)
+        expect(contents).not_to match(%r!\ATHIS IS MY LAYOUT!)
       end
 
       it "creates a sitemap.xml file" do
