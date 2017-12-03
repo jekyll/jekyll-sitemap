@@ -1,5 +1,7 @@
-require 'spec_helper'
-require 'jekyll-last-modified-at'
+# frozen_string_literal: true
+
+require "spec_helper"
+require "jekyll-last-modified-at"
 
 describe(Jekyll::JekyllSitemap) do
   let(:overrides) do
@@ -9,8 +11,8 @@ describe(Jekyll::JekyllSitemap) do
       "url"         => "http://example.org",
       "collections" => {
         "my_collection" => { "output" => true },
-        "other_things"  => { "output" => false }
-      }
+        "other_things"  => { "output" => false },
+      },
     }
   end
   let(:config) do
