@@ -15,6 +15,8 @@ plugins:
   - jekyll-sitemap
 ```
 
+💡 If you are using a Jekyll version less than 3.5.0, use the `gems` key instead of `plugins`.
+
 If all gem plugins have the same `priority`, they will be executed in the
 order they are required, generally. Thus, if you have other plugins which
 generate content and store that content in `site.pages`, `site.posts`, or
