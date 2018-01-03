@@ -16,7 +16,7 @@ module Jekyll
 
     private
 
-    INCLUDED_EXTENSIONS = %W(
+    INCLUDED_EXTENSIONS = %w(
       .htm
       .html
       .xhtml
