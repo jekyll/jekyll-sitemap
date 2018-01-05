@@ -2,10 +2,10 @@ sudo: false
 language: ruby
 cache: bundler
 rvm:
-- 2.1
 - 2.2
 - 2.3
 - 2.4
+- 2.5
 matrix:
   include:
   # GitHub Pages
@@ -22,6 +22,8 @@ branches:
   - /^v\d+\.\d+\.\d+/
 git:
   depth: 1000
+before_install: 
+- gem update --system
 install:
 - travis_retry script/bootstrap
 script: script/cibuild
