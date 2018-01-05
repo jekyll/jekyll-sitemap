@@ -14,6 +14,7 @@
   * Fix Travis Deploy (#173)
   * Test against Jekyll 3.4.x *and* latest 3.x (#177)
   * Style: Rubocop auto-correct (#195)
+  * Test against Ruby 2.5 (#201)
 
 ### Documentation
 
