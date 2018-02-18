@@ -29,17 +29,17 @@ Because the sitemap is added to `site.pages`, you may have to modify any
 templates that iterate through all pages (for example, to build a menu of
 all of the site's content).
 
-## Note on Use with Github Pages Gem
-The Github Pages gem ignores all plugins included in the Gemfile. If you only include `jekyll-sitemap` in the Gemfile without also including it in the `_config.yml` *the plugin will not work*. This can be confusing because the official Jekyll docs state that plugins can be included in either the Gemfile or `_config.yml`.
+## Note on Use with GitHub Pages Gem
+The GitHub Pages gem ignores all plugins included in the Gemfile. If you only include `jekyll-sitemap` in the Gemfile without also including it in the `_config.yml` *the plugin will not work*. This can be confusing because the official Jekyll docs state that plugins can be included in either the Gemfile or `_config.yml`.
 
-When building a site that uses the Github Pages gem, follow the instructions above and ensure that `jekyll-sitemap` is listed in the `plugins` array in `_config.yml`.
+When building a site that uses the GitHub Pages gem, follow the instructions above and ensure that `jekyll-sitemap` is listed in the `plugins` array in `_config.yml`.
 
 :warning: If you are using Jekyll < 3.5.0 use the `gems` key instead of `plugins`.
 
 ## `<lastmod>` tag
 The `<lastmod>` tag in the `sitemap.xml` will reflect by priority:
 
-1.   The modified date of the file as reported by the filesystem if you have `jekyll-last-modified-at` plugin installed (not compatible with Github Pages auto building)
+1.   The modified date of the file as reported by the filesystem if you have `jekyll-last-modified-at` plugin installed (not compatible with GitHub Pages auto building)
 2.   A personalised date if you add the variable `last_modified_at:` with a date in the Front Matter
 3.   The creation date of your post (corresponding to the `post.date` variable)
 
