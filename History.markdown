@@ -1,3 +1,7 @@
+## HEAD
+
+  * correct capitalization of GitHub (#207)
+
 ## 1.2.0 / 2018-01-25
 
 ### Minor Enhancements
