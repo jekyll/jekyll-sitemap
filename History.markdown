@@ -2,6 +2,10 @@
 
   * correct capitalization of GitHub (#207)
 
+### Documentation
+
+  * add PDF file exclusion documentation (#213)
+
 ## 1.2.0 / 2018-01-25
 
 ### Minor Enhancements
