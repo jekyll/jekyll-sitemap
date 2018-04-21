@@ -52,7 +52,7 @@ sitemap flag to `false` in the front matter for the page/post.
 sitemap: false
 ```
 
-If you would like to exclude PDF files from your sitemap... It can be achieved with configuration using [Jekyll v3.7.2 and latest jekyll-sitemap v1.2.0](https://github.com/jekyll/jekyll/commit/776433109b96cb644938ffbf9caf4923bdde4d7f).
+To exclude files from your sitemap. It can be achieved with configuration using [Jekyll v3.7.2 and jekyll-sitemap v1.2.0](https://github.com/jekyll/jekyll/commit/776433109b96cb644938ffbf9caf4923bdde4d7f).
 
 Add a glob config to your `_config.yml` file. 
 
