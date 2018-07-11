@@ -18,11 +18,13 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r!^(test|spec|features)/!)
   spec.require_paths = ["lib"]
 
+  spec.required_ruby_version = ">= 2.3.0"
+
   spec.add_dependency "jekyll", "~> 3.3"
 
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "jekyll-last-modified-at", "0.3.4"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "rubocop", "0.51"
+  spec.add_development_dependency "rubocop", "0.55"
 end

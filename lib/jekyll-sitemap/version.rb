@@ -2,6 +2,6 @@
 
 module Jekyll
   module Sitemap
-    VERSION = "1.2.0".freeze
+    VERSION = "1.2.0"
   end
 end

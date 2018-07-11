@@ -2,7 +2,7 @@ inherit_gem:
   jekyll: .rubocop.yml
 
 AllCops:
-  TargetRubyVersion: 2.1
+  TargetRubyVersion: 2.3
   Include:
     - lib/*.rb
 
