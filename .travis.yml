@@ -8,13 +8,13 @@ rvm:
 matrix:
   include:
   # GitHub Pages
-  - rvm: 2.4.0
+  - rvm: 2.4.2
     env:
-    - JEKYLL_VERSION=3.6.2
+    - JEKYLL_VERSION=3.7.3
     - GITHUB_PAGES=1 # Only set on one build in matrix
 env:
   matrix:
-  - JEKYLL_VERSION=3.6
+  - JEKYLL_VERSION=3.7
 branches:
   only:
   - master
