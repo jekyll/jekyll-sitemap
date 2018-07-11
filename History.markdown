@@ -6,6 +6,10 @@
 
   * add PDF file exclusion documentation (#213)
 
+### Development Fixes
+
+  * Use Ruby 2.3 and Rubocop 0.55 (#214)
+
 ## 1.2.0 / 2018-01-25
 
 ### Minor Enhancements
