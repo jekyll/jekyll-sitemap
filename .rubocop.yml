@@ -4,7 +4,7 @@ inherit_gem:
 AllCops:
   TargetRubyVersion: 2.3
   Include:
-    - lib/*.rb
+    - lib/**/*.rb
 
   Exclude:
     - script/**/*
