@@ -1,11 +1,8 @@
+require: rubocop-jekyll
+
 inherit_gem:
-  jekyll: .rubocop.yml
+  rubocop-jekyll: .rubocop.yml
 
-AllCops:
-  TargetRubyVersion: 2.3
-  Include:
-    - lib/**/*.rb
-
+Lint/Debugger:
   Exclude:
-    - script/**/*
-    - spec/**/*
+    - script/console
