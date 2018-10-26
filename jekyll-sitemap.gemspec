@@ -26,5 +26,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "jekyll-last-modified-at", "0.3.4"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "rubocop-jekyll", "~> 0.1"
+  spec.add_development_dependency "rubocop-jekyll", "~> 0.3"
 end

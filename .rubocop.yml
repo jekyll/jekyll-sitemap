@@ -1,8 +1,6 @@
+inherit_from: .rubocop_todo.yml
+
 require: rubocop-jekyll
 
 inherit_gem:
   rubocop-jekyll: .rubocop.yml
-
-Lint/Debugger:
-  Exclude:
-    - script/console
