@@ -27,7 +27,7 @@ module Jekyll
     #   1. A '>' followed by a newline or
     #   2. A '}' which closes a Liquid tag
     # We will strip all of this whitespace to minify the template
-    MINIFY_REGEX = %r!(?<=>\n|})\s+!
+    MINIFY_REGEX = %r!(?<=>\n|})\s+!.freeze
 
     # Array of all non-jekyll site files with an HTML extension
     def static_files

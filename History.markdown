@@ -9,6 +9,7 @@
 ### Development Fixes
 
   * Use Ruby 2.3 and Rubocop 0.55 (#214)
+  * chore(deps): rubocop-jekyll-0.3 (#227)
 
 ## 1.2.0 / 2018-01-25
 
