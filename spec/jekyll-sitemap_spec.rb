@@ -71,6 +71,10 @@ describe(Jekyll::JekyllSitemap) do
     it "performs URI encoding of site paths" do
       expect(contents).to match /<loc>http:\/\/example\.org\/this%20url%20has%20an%20%C3%BCmlaut<\/loc>/
     end
+
+    it "correctly encodes an ellipsis" do
+      expect(contents).to match /<loc>http:\/\/example\.org\/this%20url%20has%20an%20ellipsis%E2%80%A6<\/loc>/
+    end
   end
 
   it "generates the correct date for each of the posts" do
@@ -134,9 +138,9 @@ describe(Jekyll::JekyllSitemap) do
   it "includes the correct number of items" do
     # static_files/excluded.pdf is excluded on Jekyll 3.4.2 and above
     if Gem::Version.new(Jekyll::VERSION) >= Gem::Version.new("3.4.2")
-      expect(contents.scan(%r!(?=<url>)!).count).to eql 20
-    else
       expect(contents.scan(%r!(?=<url>)!).count).to eql 21
+    else
+      expect(contents.scan(%r!(?=<url>)!).count).to eql 22
     end
   end
 
