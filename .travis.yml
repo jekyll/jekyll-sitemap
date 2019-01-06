@@ -2,12 +2,12 @@ sudo: false
 language: ruby
 cache: bundler
 rvm:
-- 2.3
-- 2.5
+- 2.4
+- 2.6
 matrix:
   include:
   # GitHub Pages
-  - rvm: 2.5.1
+  - rvm: 2.5.3
     env:
     - JEKYLL_VERSION=3.7.4
     - GITHUB_PAGES=1 # Only set on one build in matrix
