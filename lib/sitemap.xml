@@ -21,7 +21,14 @@
     <url>
       <loc>{{ page.url | replace:'/index.html','/' | absolute_url | xml_escape }}</loc>
       {% if page.last_modified_at %}
-        <lastmod>{{ page.last_modified_at | date_to_xmlschema }}</lastmod>
+        {% if page.last_modified_at == 'SITE_TIME' %}
+          {% assign lastmod = site.time %}
+        {% elsif page.last_modified_at == 'LATEST_POST' %}
+          {% assign lastmod = site.posts.first.date %}
+        {% else %}
+          {% assign lastmod = page.last_modified_at %}
+        {% endif %}
+        <lastmod>{{ lastmod | date_to_xmlschema }}</lastmod>
       {% endif %}
     </url>
   {% endfor %}
