@@ -1,3 +1,7 @@
+## HEAD
+
+  * Release: v1.3.0 (#243)
+
 ## 1.3.0 / 2019-03-21
 
   * Allow Jekyll v4 (still alpha)
