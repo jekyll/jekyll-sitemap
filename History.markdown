@@ -1,10 +1,11 @@
-## HEAD
+## 1.3.0 / 2019-03-21
 
-  * correct capitalization of GitHub (#207)
+  * Allow Jekyll v4 (still alpha)
 
 ### Documentation
 
-  * add PDF file exclusion documentation (#213)
+  * Add PDF file exclusion documentation (#213)
+  * Correct capitalization of GitHub (#207)
 
 ### Development Fixes
 
