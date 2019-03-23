@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r!^(test|spec|features)/!)
   spec.require_paths = ["lib"]
 
-  spec.required_ruby_version = ">= 2.4.0"
+  spec.required_ruby_version = ">= 2.3.0"
 
   spec.add_dependency "jekyll", ">= 3.7", "< 5.0"
 
