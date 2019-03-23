@@ -2,6 +2,10 @@
 
   * Release: v1.3.0 (#243)
 
+### Bug Fixes
+
+  * Update plugin metadata and dev environment (#244)
+
 ## 1.3.0 / 2019-03-21
 
   * Allow Jekyll v4 (still alpha)
