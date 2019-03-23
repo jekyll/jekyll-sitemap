@@ -15,7 +15,7 @@ matrix:
     env: JEKYLL_VERSION=">= 4.0.0.pre.alpha1"
 env:
   matrix:
-  - JEKYLL_VERSION=3.8
+  - JEKYLL_VERSION="~> 3.8"
 branches:
   only:
   - master
