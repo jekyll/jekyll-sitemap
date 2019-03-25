@@ -6,7 +6,7 @@
 
 ### Development Fixes
 
-  * Relax version constraint on `jekyll-last-modified-at`
+  * Lock requirement for `jekyll-last-modified-at` to `>= 1.0`
 
 ## 1.3.0 / 2019-03-21
 
