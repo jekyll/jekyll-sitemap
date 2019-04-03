@@ -195,12 +195,38 @@ describe(Jekyll::JekyllSitemap) do
         expect(contents).not_to match(%r!\ATHIS IS MY LAYOUT!)
       end
 
-      it "creates a sitemap.xml file" do
+      it "creates a robots.txt file" do
         expect(File.exist?(dest_dir("robots.txt"))).to be_truthy
       end
 
       it "renders liquid" do
         expect(contents).to match("Sitemap: http://xn--mlaut-jva.example.org/sitemap.xml")
+      end
+
+      context "user defined robots.txt" do
+        before do
+          File.open("#{SOURCE_DIR}/robots.txt", "w") { |f| f.write("Allow: /") }
+          site.process
+        end
+
+        let(:contents) { File.read(dest_dir("robots.txt")) }
+
+        it "has no layout" do
+          expect(contents).not_to match(%r!\ATHIS IS MY LAYOUT!)
+        end
+
+        it "creates a robots.txt file" do
+          expect(File.exist?(dest_dir("robots.txt"))).to be_truthy
+        end
+
+        it "does not override user defined robots.txt" do
+          expect(contents).to match("Allow: /")
+        end
+
+        after do
+          File.delete("#{SOURCE_DIR}/robots.txt")
+          site.process
+        end
       end
     end
   end
