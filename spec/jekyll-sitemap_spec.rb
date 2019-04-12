@@ -202,31 +202,32 @@ describe(Jekyll::JekyllSitemap) do
       it "renders liquid" do
         expect(contents).to match("Sitemap: http://xn--mlaut-jva.example.org/sitemap.xml")
       end
+    end
 
-      context "user defined robots.txt" do
-        before do
-          File.open("#{SOURCE_DIR}/robots.txt", "w") { |f| f.write("Allow: /") }
-          site.process
-        end
+    context "user defined robots.txt" do
+      let(:overrides) do
+        {
+          "source"      => source_dir("/user-defined-robots/"),
+          "destination" => site_dest_dir,
+          "url"         => "http://example.org",
+          "collections" => {
+            "my_collection" => { "output" => true },
+            "other_things"  => { "output" => false },
+          },
+        }
+      end
+      let(:contents) { File.read(site_dest_dir("robots.txt")) }
 
-        let(:contents) { File.read(dest_dir("robots.txt")) }
+      it "has no layout" do
+        expect(contents).not_to match(%r!\ATHIS IS MY LAYOUT!)
+      end
 
-        it "has no layout" do
-          expect(contents).not_to match(%r!\ATHIS IS MY LAYOUT!)
-        end
+      it "creates a robots.txt file" do
+        expect(File.exist?(dest_dir("robots.txt"))).to be_truthy
+      end
 
-        it "creates a robots.txt file" do
-          expect(File.exist?(dest_dir("robots.txt"))).to be_truthy
-        end
-
-        it "does not override user defined robots.txt" do
-          expect(contents).to match("Allow: /")
-        end
-
-        after do
-          File.delete("#{SOURCE_DIR}/robots.txt")
-          site.process
-        end
+      it "does not override user defined robots.txt" do
+        expect(contents).to match("Allow: /")
       end
     end
   end
