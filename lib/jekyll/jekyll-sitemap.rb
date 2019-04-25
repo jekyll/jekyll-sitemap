@@ -62,7 +62,11 @@ module Jekyll
 
     # Checks if a file already exists in the site source
     def file_exists?(file_path)
-      (@site.pages + @site.static_files).any? { |p| p.url == "/#{file_path}" }
+      pages_and_files.any? { |p| p.url == "/#{file_path}" }
+    end
+
+    def pages_and_files
+      @pages_and_files ||= @site.pages + @site.static_files
     end
   end
 end
