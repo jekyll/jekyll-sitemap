@@ -1,6 +1,5 @@
 *.gem
 Gemfile.lock
 spec/dest
-spec/_site
 .bundle
 spec/fixtures/.jekyll-cache

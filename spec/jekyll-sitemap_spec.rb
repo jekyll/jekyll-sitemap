@@ -203,31 +203,53 @@ describe(Jekyll::JekyllSitemap) do
         expect(contents).to match("Sitemap: http://xn--mlaut-jva.example.org/sitemap.xml")
       end
     end
+  end
 
-    context "user defined robots.txt" do
-      let(:overrides) do
-        {
-          "source"      => source_dir("/user-defined-robots/"),
-          "destination" => site_dest_dir,
-          "url"         => "http://example.org",
-          "collections" => {
-            "my_collection" => { "output" => true },
-            "other_things"  => { "output" => false },
-          },
-        }
+  context "with user-defined robots.txt" do
+    let(:fixture) { "/" }
+    let(:fixture_source) { robot_fixtures(fixture) }
+    let(:fixture_dest) { robot_fixtures(fixture, "_site") }
+    let(:robot_contents) { File.read(robot_fixtures(fixture, "_site", "robots.txt")).strip }
+    let(:overrides) do
+      {
+        "source"      => fixture_source,
+        "destination" => fixture_dest,
+        "url"         => "http://example.org",
+      }
+    end
+
+    before(:each) { setup_fixture(fixture) }
+    after(:each) { cleanup_fixture(fixture) }
+
+    context "as a static-file at source-root" do
+      let(:fixture) { "static-at-source-root" }
+
+      it "doesn't override the robots file" do
+        expect(robot_contents).to eql("Allow: /")
       end
-      let(:contents) { File.read(site_dest_dir("robots.txt")) }
+    end
 
-      it "has no layout" do
-        expect(contents).not_to match(%r!\ATHIS IS MY LAYOUT!)
+    context "as a static-file in a subdir" do
+      let(:fixture) { "static-in-subdir" }
+
+      it "generates a valid robot.txt" do
+        expect(robot_contents).to eql("Sitemap: http://example.org/sitemap.xml")
       end
+    end
 
-      it "creates a robots.txt file" do
-        expect(File.exist?(dest_dir("robots.txt"))).to be_truthy
+    context "as a page at root" do
+      let(:fixture) { "page-at-root" }
+
+      it "doesn't override the robots file" do
+        expect(robot_contents).to eql("Allow: http://example.org")
       end
+    end
 
-      it "does not override user defined robots.txt" do
-        expect(contents).to match("Allow: /")
+    context "as a page with permalink in a subdir" do
+      let(:fixture) { "permalinked-page-in-subdir" }
+
+      it "doesn't override the robots file" do
+        expect(robot_contents).to eql("Allow: http://example.org")
       end
     end
   end
