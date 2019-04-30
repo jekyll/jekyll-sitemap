@@ -195,12 +195,61 @@ describe(Jekyll::JekyllSitemap) do
         expect(contents).not_to match(%r!\ATHIS IS MY LAYOUT!)
       end
 
-      it "creates a sitemap.xml file" do
+      it "creates a robots.txt file" do
         expect(File.exist?(dest_dir("robots.txt"))).to be_truthy
       end
 
       it "renders liquid" do
         expect(contents).to match("Sitemap: http://xn--mlaut-jva.example.org/sitemap.xml")
+      end
+    end
+  end
+
+  context "with user-defined robots.txt" do
+    let(:fixture) { "/" }
+    let(:fixture_source) { robot_fixtures(fixture) }
+    let(:fixture_dest) { robot_fixtures(fixture, "_site") }
+    let(:robot_contents) { File.read(robot_fixtures(fixture, "_site", "robots.txt")).strip }
+    let(:overrides) do
+      {
+        "source"      => fixture_source,
+        "destination" => fixture_dest,
+        "url"         => "http://example.org",
+      }
+    end
+
+    before(:each) { setup_fixture(fixture) }
+    after(:each) { cleanup_fixture(fixture) }
+
+    context "as a static-file at source-root" do
+      let(:fixture) { "static-at-source-root" }
+
+      it "doesn't override the robots file" do
+        expect(robot_contents).to eql("Allow: /")
+      end
+    end
+
+    context "as a static-file in a subdir" do
+      let(:fixture) { "static-in-subdir" }
+
+      it "generates a valid robot.txt" do
+        expect(robot_contents).to eql("Sitemap: http://example.org/sitemap.xml")
+      end
+    end
+
+    context "as a page at root" do
+      let(:fixture) { "page-at-root" }
+
+      it "doesn't override the robots file" do
+        expect(robot_contents).to eql("Allow: http://example.org")
+      end
+    end
+
+    context "as a page with permalink in a subdir" do
+      let(:fixture) { "permalinked-page-in-subdir" }
+
+      it "doesn't override the robots file" do
+        expect(robot_contents).to eql("Allow: http://example.org")
       end
     end
   end
