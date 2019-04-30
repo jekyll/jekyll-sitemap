@@ -1,3 +1,9 @@
+## HEAD
+
+### Minor Enhancements
+
+  * Avoid overwriting an existing robots.txt (#246)
+
 ## 1.3.1 / 2019-03-25
 
 ### Bug Fixes
