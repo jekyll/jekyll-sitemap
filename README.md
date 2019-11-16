@@ -52,7 +52,7 @@ properly hit the index of each set of archives.
 To prevent jekyll-sitemap from removing index.html in the links within the
 resulting sitemap.xml, add the following block to your _config.yml
 
-```
+```yml
 jekyll-sitemap:
   keep-index: true
 ```
