@@ -43,6 +43,20 @@ The `<lastmod>` tag in the `sitemap.xml` will reflect by priority:
 2.   A personalised date if you add the variable `last_modified_at:` with a date in the Front Matter
 3.   The creation date of your post (corresponding to the `post.date` variable)
 
+## Option: Keep index.html
+By default, jekyll-sitemap removes index.html from all permalinks to ensure clean
+URLs in the resulting sitemap.xml. In some cases (particularly when Jekyll is
+hosted in S3) keeping index.html is helpful to ensure that search engines can
+properly hit the index of each set of archives.
+
+To prevent jekyll-sitemap from removing index.html in the links within the
+resulting sitemap.xml, add the following block to your _config.yml
+
+```
+jekyll-sitemap:
+  keep-index: true
+```
+
 ## Exclusions
 
 If you would like to exclude specific pages/posts from the sitemap set the
