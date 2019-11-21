@@ -3,16 +3,15 @@ cache: bundler
 rvm:
 - &latest_ruby 2.6
 - 2.4
-- 2.3
 matrix:
   include:
   # GitHub Pages
   - rvm: 2.5.3
     env:
-    - JEKYLL_VERSION="~> 3.7.4"
+    - JEKYLL_VERSION="~> 3.8.5"
     - GITHUB_PAGES=1 # Only set on one build in matrix
   - rvm: *latest_ruby
-    env: JEKYLL_VERSION=">= 4.0.0.pre.alpha1"
+    env: JEKYLL_VERSION=">= 4.0.0"
 env:
   matrix:
   - JEKYLL_VERSION="~> 3.8"
