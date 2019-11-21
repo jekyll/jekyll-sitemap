@@ -1,4 +1,4 @@
-## 1.4.0 / 2019-11-21
+## HEAD
 
 ### Minor Enhancements
 
