@@ -20,27 +20,30 @@ describe(Jekyll::JekyllSitemap) do
   let(:site)     { Jekyll::Site.new(config) }
   let(:contents) { File.read(dest_dir("sitemap.xml")) }
   before(:each) do
+    # simulate `last_modified_at` injection by `jekyll-last-modified-at` plugin
+    Jekyll::Hooks.register([:pages, :documents], :post_init) do |page|
+      page.data["last_modified_at"] = Time.parse("2015-01-18T00:00:00+00:00")
+    end
+
     site.process
   end
 
   context "with jekyll-last-modified-at" do
     it "correctly adds the modified time to the posts" do
-      # simulate `last_modified_at` injection by `jekyll-last-modified-at` plugin
-      post = site.posts.find { |p| p.url == "/2015/01/18/jekyll-last-modified-at.html" }
-      post.data["last_modified_at"] = Time.parse("2015-01-19T07:03:38+00:00")
-
       expect(contents).to match(
-        %r!<loc>http://example.org/2015/01/18/jekyll-last-modified-at.html</loc>\s+<lastmod>2015-01-19T07:03:38\+00:00</lastmod>!
+        %r!
+          <loc>http://example.org/2015/01/18/jekyll-last-modified-at.html</loc>\s+
+          <lastmod>2015-01-18T00:00:00\+00:00</lastmod>
+        !x
       )
     end
 
     it "correctly adds the modified time to the pages" do
-      # simulate `last_modified_at` injection by `jekyll-last-modified-at` plugin
-      page = site.pages.find { |p| p.url == "/jekyll-last-modified-at/page.html" }
-      page.data["last_modified_at"] = Time.parse("2015-01-19T07:03:38+00:00")
-
       expect(contents).to match(
-        %r!<loc>http://example.org/jekyll-last-modified-at/page.html</loc>\s+<lastmod>2015-01-19T07:03:38\+00:00</lastmod>!
+        %r!
+          <loc>http://example.org/jekyll-last-modified-at/page.html</loc>\s+
+          <lastmod>2015-01-18T00:00:00\+00:00</lastmod>
+        !x
       )
     end
   end
