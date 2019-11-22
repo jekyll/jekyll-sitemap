@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "jekyll-last-modified-at"
 
 describe(Jekyll::JekyllSitemap) do
   let(:overrides) do
@@ -26,11 +25,23 @@ describe(Jekyll::JekyllSitemap) do
 
   context "with jekyll-last-modified-at" do
     it "correctly adds the modified time to the posts" do
-      expect(contents).to match  %r!<loc>http://example.org/2015/01/18/jekyll-last-modified-at.html</loc>\s+<lastmod>2015-01-19T07:03:38\+00:00</lastmod>!
+      # simulate `last_modified_at` injection by `jekyll-last-modified-at` plugin
+      post = site.posts.find { |p| p.url == "/2015/01/18/jekyll-last-modified-at.html" }
+      post.data["last_modified_at"] = Time.parse("2015-01-19T07:03:38+00:00")
+
+      expect(contents).to match(
+        %r!<loc>http://example.org/2015/01/18/jekyll-last-modified-at.html</loc>\s+<lastmod>2015-01-19T07:03:38\+00:00</lastmod>!
+      )
     end
 
     it "correctly adds the modified time to the pages" do
-      expect(contents).to match  %r!<loc>http://example.org/jekyll-last-modified-at/page.html</loc>\s+<lastmod>2015-01-19T07:03:38\+00:00</lastmod>!
+      # simulate `last_modified_at` injection by `jekyll-last-modified-at` plugin
+      page = site.pages.find { |p| p.url == "/jekyll-last-modified-at/page.html" }
+      page.data["last_modified_at"] = Time.parse("2015-01-19T07:03:38+00:00")
+
+      expect(contents).to match(
+        %r!<loc>http://example.org/jekyll-last-modified-at/page.html</loc>\s+<lastmod>2015-01-19T07:03:38\+00:00</lastmod>!
+      )
     end
   end
 end
