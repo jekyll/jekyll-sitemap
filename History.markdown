@@ -4,6 +4,10 @@
 
   * Avoid overwriting an existing robots.txt (#246)
 
+### Bug Fixes
+
+  * Simulate `last_modified_at` injection by plugin (#256)
+
 ## 1.3.1 / 2019-03-25
 
 ### Bug Fixes
