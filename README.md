@@ -10,7 +10,7 @@
 2. Add the following to your site's `_config.yml`:
 
 ```yml
-url: "http://example.com" # the base hostname & protocol for your site
+url: "https://example.com" # the base hostname & protocol for your site
 plugins:
   - jekyll-sitemap
 ```
