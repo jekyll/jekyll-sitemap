@@ -101,6 +101,10 @@ describe(Jekyll::JekyllSitemap) do
     expect(contents).to match %r!/static_files/test.pdf!
   end
 
+  it "does include assets or any static files with .xml extension" do
+    expect(contents).to match %r!/static_files/test.xml!
+  end
+
   it "does not include any static files named 404.html" do
     expect(contents).not_to match %r!/static_files/404.html!
   end
