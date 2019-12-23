@@ -1,3 +1,9 @@
+## HEAD
+
+### Minor Enhancements
+
+  * Add XML file type to INCLUDED_EXTENSIONS (#258)
+
 ## 1.4.0 / 2019-11-21
 
 ### Minor Enhancements
