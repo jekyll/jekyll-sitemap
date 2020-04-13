@@ -1,8 +1,8 @@
 language: ruby
 cache: bundler
 rvm:
-- &latest_ruby 2.6
-- 2.4
+- &latest_ruby 2.7
+- 2.5
 matrix:
   include:
   # GitHub Pages
