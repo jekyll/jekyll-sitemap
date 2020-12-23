@@ -13,11 +13,11 @@ jobs:
   # GitHub Pages
   - rvm: 2.5
     env:
-    - JEKYLL_VERSION="=> 3.9.0"
+    - JEKYLL_VERSION="= 3.9.0"
     - GITHUB_PAGES=1
   - rvm: *latest_ruby
     env:
-    - JEKYLL_VERSION="=> 3.9.0"
+    - JEKYLL_VERSION="= 3.9.0"
     - GITHUB_PAGES=1
 before_install:
 - gem update --system
