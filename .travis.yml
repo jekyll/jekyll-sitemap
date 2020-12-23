@@ -12,7 +12,7 @@ env:
 jobs:
   include:
   # GitHub Pages
-  - rvm: 2.5.3
+  - rvm: 2.5
     env:
     - JEKYLL_VERSION="~> 3.8.5"
     - GITHUB_PAGES=1 # Only set on one build in matrix
