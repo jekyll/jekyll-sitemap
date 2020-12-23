@@ -24,8 +24,8 @@ jobs:
     before_install: *addkramdowngfm
 branches:
   only:
-    - master
-      - /^v\d+\.\d+\.\d+/
+  - master
+  - /^v\d+\.\d+\.\d+/
 before_install:
 - gem update --system
 install:
