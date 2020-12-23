@@ -5,7 +5,11 @@ cache: bundler
 rvm:
 - &latest_ruby 2.7
 - 2.5
-matrix:
+env:
+  - JEKYLL_VERSION="< 3.5.0"
+  - JEKYLL_VERSION="~> 3.5"
+  - JEKYLL_VERSION="~> 4.0"
+jobs:
   include:
   # GitHub Pages
   - rvm: 2.5.3
