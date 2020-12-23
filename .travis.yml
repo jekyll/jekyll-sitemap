@@ -6,8 +6,7 @@ rvm:
 - &latest_ruby 2.7
 - 2.5
 env:
-  - JEKYLL_VERSION="< 3.5.0"
-  - JEKYLL_VERSION="~> 3.5"
+  - JEKYLL_VERSION="~> 3.7"
   - JEKYLL_VERSION="~> 4.0"
 jobs:
   include:
