@@ -13,13 +13,15 @@ jobs:
   include:
   # GitHub Pages
   - rvm: 2.5
-    env:
-    - JEKYLL_VERSION="= 3.9.0"
-    - GITHUB_PAGES=1
+    env: &githubpages
+      - JEKYLL_VERSION="= 3.9.0"
+      - GITHUB_PAGES=1
+    before_install: &addkramdowngfm
+      - gem update --system
+      - bundle add kramdown-parser-gfm
   - rvm: *latest_ruby
-    env:
-    - JEKYLL_VERSION="= 3.9.0"
-    - GITHUB_PAGES=1
+    env: *githubpages
+    before_install: *addkramdowngfm
 before_install:
 - gem update --system
 install:
