@@ -71,6 +71,10 @@ describe(Jekyll::JekyllSitemap) do
     it "performs URI encoding of site paths" do
       expect(contents).to match %r!<loc>http://example\.org/this%20url%20has%20an%20%C3%BCmlaut</loc>!
     end
+
+    it "correctly encodes an ellipsis" do
+      expect(contents).to match /<loc>http:\/\/example\.org\/this%20url%20has%20an%20ellipsis%E2%80%A6<\/loc>/
+    end
   end
 
   it "generates the correct date for each of the posts" do
