@@ -6,15 +6,15 @@ rvm:
 matrix:
   include:
   # GitHub Pages
-  - rvm: 2.5.3
+  - rvm: 2.7.1
     env:
-    - JEKYLL_VERSION="~> 3.8.5"
+    - JEKYLL_VERSION="~> 3.9"
     - GITHUB_PAGES=1 # Only set on one build in matrix
   - rvm: *latest_ruby
-    env: JEKYLL_VERSION=">= 4.0.0"
+    env: JEKYLL_VERSION="~> 4.0"
 env:
   matrix:
-  - JEKYLL_VERSION="~> 3.8"
+  - JEKYLL_VERSION="~> 3.9"
 branches:
   only:
   - master
