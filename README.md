@@ -50,7 +50,7 @@ hosted in S3) keeping index.html is helpful to ensure that search engines can
 properly hit the index of each set of archives.
 
 To prevent jekyll-sitemap from removing index.html in the links within the
-resulting sitemap.xml, add the following block to your _config.yml
+generated sitemap.xml, add the following block to your _config.yml
 
 ```yml
 jekyll-sitemap:
