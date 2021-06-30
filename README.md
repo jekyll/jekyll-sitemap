@@ -83,7 +83,7 @@ defaults:
 For some Jekyll users, since plugins cannot be run on GitHub pages, they opt to build locally and push their pre-built
 `_site` from the _source branch_ instead of `_root` on the _master branch_.
 In this case, to build the sitemap using the base url defined in `_config.yml` instead of "local host",
-you will first need to `build` rather than `serve` before pushing `_site` to Github, or do both consecutively; `bundle exec jekyll build & bundle exec jekyll serve`
+you will first need to `build` rather than `serve` before pushing `_site` to Github; `bundle exec jekyll build`
 
 ## Known Issues
 
