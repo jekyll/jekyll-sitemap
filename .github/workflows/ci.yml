@@ -10,13 +10,18 @@ on:
 
 jobs:
   ci:
-    name: "Unit Tests (Ruby ${{ matrix.ruby_version }})"
+    name: ${{ matrix.job_name }}
     runs-on: "ubuntu-latest"
     strategy:
       fail-fast: false
       matrix:
-        ruby_version:
-          - "2.4"
+        include:
+          - job_name: "Style Check (Ruby ${{ matrix.ruby_version }})"
+            step_name: Run RuboCop
+            script_file: fmt
+            ruby_version: "2.5"
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+      - name: ${{ matrix.job_name }}
+        run:  bash script/${{ matrix.script_file }}
