@@ -10,13 +10,13 @@ on:
 
 jobs:
   ci:
-    name: ${{ matrix.job_name }}
+    name: "${{ matrix.job_name }} (Ruby ${{ matrix.ruby_version }})"
     runs-on: "ubuntu-latest"
     strategy:
       fail-fast: false
       matrix:
         include:
-          - job_name: "Style Check (Ruby ${{ matrix.ruby_version }})"
+          - job_name: "Style Check"
             step_name: Run RuboCop
             script_file: fmt
             ruby_version: "2.5"
