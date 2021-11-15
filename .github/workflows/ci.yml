@@ -3,20 +3,38 @@ name: Continuous Integration
 on:
   push:
     branches:
-      - master
+    - master
   pull_request:
     branches:
-      - master
+    - master
 
 jobs:
   ci:
-    name: "Unit Tests (Ruby ${{ matrix.ruby_version }})"
+    name: "Unit Tests (Ruby ${{ matrix.ruby_version }}, Jekyll ${{ matrix.jekyll_version }})"
     runs-on: "ubuntu-latest"
+    env:
+      JEKYLL_VERSION: ${{ matrix.jekyll_version }}
     strategy:
       fail-fast: false
       matrix:
         ruby_version:
-          - "2.4"
+          - "2.5"
+          - "2.7"
+          - "3.0"
+        jekyll_version:
+          - "~> 3.9"
+          - "~> 4.0"
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+      - name: "Set up Ruby ${{ matrix.ruby_version }}"
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+      - name: Execute tests
+        run:  bundle exec rspec
+      - name: Execute jekyll-last-modified-at.rb
+        run:  bundle exec rspec spec/test_jekyll-last-modified-at.rb
+      - name: Test Gem Build
+        run: bundle exec gem build jekyll-sitemap.gemspec
