@@ -28,5 +28,5 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby_version }}
           bundler-cache: true
-      - name: ${{ matrix.job_name }}
+      - name: ${{ matrix.step_name }}
         run:  bash script/${{ matrix.script_file }}
