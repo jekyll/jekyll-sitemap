@@ -54,3 +54,21 @@ jobs:
           bundler-cache: true
       - name: Test Gem Build
         run:  bundle exec gem build jekyll-sitemap.gemspec
+
+  style_check:
+    name: "Style Check (Ruby ${{ matrix.ruby_version }})"
+    runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        ruby_version:
+          - 2.5
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: "Set Up Ruby ${{ matrix.ruby_version }}"
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+      - name: Run RuboCop
+        run:  bash script/fmt
