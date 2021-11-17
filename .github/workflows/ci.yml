@@ -29,12 +29,28 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: "Set up Ruby ${{ matrix.ruby_version }}"
+      - name: "Set Up Ruby ${{ matrix.ruby_version }}"
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby_version }}
           bundler-cache: true
       - name: Execute tests
         run:  bash script/test
+
+  gem_build:
+    name: "Test Building Gem (Ruby ${{ matrix.ruby_version }})"
+    runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        ruby_version:
+          - 2.7
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: "Set Up Ruby ${{ matrix.ruby_version }}"
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
       - name: Test Gem Build
         run:  bundle exec gem build jekyll-sitemap.gemspec
