@@ -3,10 +3,10 @@ name: Continuous Integration
 on:
   push:
     branches:
-    - master
+      - master
   pull_request:
     branches:
-    - master
+      - master
 
 jobs:
   ci:
@@ -37,4 +37,4 @@ jobs:
       - name: Execute jekyll-last-modified-at.rb
         run:  bundle exec rspec spec/test_jekyll-last-modified-at.rb
       - name: Test Gem Build
-        run: bundle exec gem build jekyll-sitemap.gemspec
+        run:  bundle exec gem build jekyll-sitemap.gemspec
