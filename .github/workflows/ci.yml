@@ -10,16 +10,22 @@ on:
 
 jobs:
   ci:
-    name: "${{ matrix.job_name }} (Ruby ${{ matrix.ruby_version }})"
+    name: "Unit Tests (Ruby ${{ matrix.ruby_version }}, Jekyll ${{ matrix.jekyll_version }})"
     runs-on: "ubuntu-latest"
+    env:
+      JEKYLL_VERSION: ${{ matrix.jekyll_version }}
     strategy:
       fail-fast: false
       matrix:
+        ruby_version:
+          - "2.5"
+          - "2.7"
+          - "3.0"
+        jekyll_version:
+          - "~> 4.0"
         include:
-          - job_name: "Style Check"
-            step_name: Run RuboCop
-            script_file: fmt
-            ruby_version: "2.5"
+          - ruby_version: "2.7.3"
+            jekyll_version: "~> 3.9"
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -28,5 +34,7 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby_version }}
           bundler-cache: true
-      - name: ${{ matrix.step_name }}
-        run:  bash script/${{ matrix.script_file }}
+      - name: Execute tests
+        run:  bash script/test
+      - name: Test Gem Build
+        run:  bundle exec gem build jekyll-sitemap.gemspec
