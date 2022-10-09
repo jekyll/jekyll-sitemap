@@ -1,1 +1,1 @@
-Sitemap: {{ "sitemap.xml" | absolute_url }}
+Sitemap: {{ page.priority_sitemap | absolute_url }}
