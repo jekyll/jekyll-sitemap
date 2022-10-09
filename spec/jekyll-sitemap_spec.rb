@@ -257,4 +257,122 @@ describe(Jekyll::JekyllSitemap) do
       end
     end
   end
+
+  describe "Sitemap Index" do
+    let(:custom_config) { {} }
+    let(:config) do
+      Jekyll.configuration(
+        Jekyll::Utils.deep_merge_hashes(
+          overrides, custom_config
+        )
+      )
+    end
+    let(:index_filename) { "sitemap_index.xml" }
+    let(:index_entries) do
+      [
+        "repo1/sitemap.xml",
+        "repo2/sitemap.xml",
+        "repo3/custom-sitemap.xml",
+      ].map { |e| "https://username.github.io/#{e}" }
+    end
+    let(:index_contents) { File.read(dest_dir(index_filename)) }
+    let(:robots_contents) { File.read(dest_dir("robots.txt")) }
+
+    context "with default configuration" do
+      it "does not generate a sitemap_index.xml file" do
+        expect(File.exist?(dest_dir("sitemap_index.xml"))).to_not be_truthy
+      end
+
+      it "generates a sitemap.xml file" do
+        expect(File.exist?(dest_dir("sitemap.xml"))).to be_truthy
+      end
+
+      it "generates a robots.txt file" do
+        expect(File.exist?(dest_dir("robots.txt"))).to be_truthy
+        expect(robots_contents).to match("Sitemap: http://example.org/sitemap.xml")
+      end
+    end
+
+    context "with improper configuration" do
+      let(:custom_config) do
+        {
+          "jekyll_sitemap" => {
+            "index" => "www.example.org/sitemap_index.xml",
+          },
+        }
+      end
+
+      it "does not generate a sitemap_index.xml file" do
+        expect(File.exist?(dest_dir("sitemap_index.xml"))).to_not be_truthy
+      end
+
+      it "generates a sitemap.xml file" do
+        expect(File.exist?(dest_dir("sitemap.xml"))).to be_truthy
+      end
+
+      it "generates a robots.txt file" do
+        expect(File.exist?(dest_dir("robots.txt"))).to be_truthy
+        expect(robots_contents).to match("Sitemap: http://example.org/sitemap.xml")
+      end
+    end
+
+    context "with proper configuration - I" do
+      let(:custom_config) do
+        {
+          "baseurl"        => "bass",
+          "jekyll_sitemap" => {
+            "index" => {
+              "linked_sitemaps" => [],
+            },
+          },
+        }
+      end
+
+      it "generates a sitemap_index.xml file" do
+        expect(File.exist?(dest_dir("sitemap_index.xml"))).to be_truthy
+      end
+
+      it "generates a sitemap.xml file" do
+        expect(File.exist?(dest_dir("sitemap.xml"))).to be_truthy
+      end
+
+      it "generates a robots.txt file" do
+        expect(File.exist?(dest_dir("robots.txt"))).to be_truthy
+        expect(robots_contents).to match("Sitemap: http://example.org/bass/sitemap_index.xml")
+      end
+    end
+
+    context "with proper configuration - II" do
+      let(:index_filename) { "sitemap-index.xml" }
+      let(:custom_config) do
+        {
+          "url"            => "https://username.github.io",
+          "jekyll_sitemap" => {
+            "index" => {
+              "filename"        => index_filename,
+              "linked_sitemaps" => index_entries,
+            },
+          },
+        }
+      end
+
+      it "generates a sitemap-index.xml file" do
+        expect(File.exist?(dest_dir("sitemap_index.xml"))).to_not be_truthy
+        expect(File.exist?(dest_dir("sitemap-index.xml"))).to be_truthy
+
+        expect(index_contents).to match("<loc>https://username.github.io/sitemap.xml</loc>")
+        expect(index_contents).to match("<loc>https://username.github.io/repo1/sitemap.xml</loc>")
+        expect(index_contents).to match("<loc>https://username.github.io/repo3/custom-sitemap.xml</loc>")
+      end
+
+      it "generates a sitemap.xml file" do
+        expect(File.exist?(dest_dir("sitemap.xml"))).to be_truthy
+      end
+
+      it "generates a robots.txt file" do
+        expect(File.exist?(dest_dir("robots.txt"))).to be_truthy
+        expect(robots_contents).to match("Sitemap: https://username.github.io/sitemap-index.xml")
+      end
+    end
+  end
 end

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+{% if page.xsl %}<?xml-stylesheet type="text/xsl" href="{{ page.xsl | absolute_url }}"?>{% endif %}
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {%- comment %}The first entry is always the sitemap generated for current site.{% endcomment %}
+  <sitemap>
+    <loc>{{ 'sitemap.xml' | absolute_url }}</loc>
+  </sitemap>
+  {% for entry in page.linked_sitemaps %}
+  <sitemap>
+    <loc>{{ entry | absolute_url }}</loc>
+  </sitemap>
+  {% endfor %}
+</sitemapindex>

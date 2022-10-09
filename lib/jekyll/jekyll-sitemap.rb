@@ -10,6 +10,20 @@ module Jekyll
     # Main plugin action, called by Jekyll-core
     def generate(site)
       @site = site
+
+      @config = site.config["jekyll_sitemap"]
+      @config = {} unless @config.is_a?(Hash) && @config["index"].is_a?(Hash)
+
+      @index_filename = @config.dig("index", "filename") || "sitemap_index.xml"
+      @index_entries =  @config.dig("index", "linked_sitemaps")
+
+      if @index_entries.is_a?(Array)
+        @priority_sitemap = @index_filename
+        @site.pages << sitemap_index unless file_exists?("sitemap_index.xml")
+      else
+        @priority_sitemap = "sitemap.xml"
+      end
+
       @site.pages << sitemap unless file_exists?("sitemap.xml")
       @site.pages << robots unless file_exists?("robots.txt")
     end
@@ -45,6 +59,16 @@ module Jekyll
       @site.in_dest_dir(file)
     end
 
+    def sitemap_index
+      index = PageWithoutAFile.new(@site, __dir__, "", "sitemap_index.xml")
+      index.content = File.read(source_path("sitemap_index.xml")).gsub(MINIFY_REGEX, "")
+      index.data["layout"] = nil
+      index.data["permalink"] = "/#{@index_filename}"
+      index.data["linked_sitemaps"] = @index_entries
+      index.data["xsl"] = file_exists?("sitemap_index.xsl")
+      index
+    end
+
     def sitemap
       site_map = PageWithoutAFile.new(@site, __dir__, "", "sitemap.xml")
       site_map.content = File.read(source_path).gsub(MINIFY_REGEX, "")
@@ -58,6 +82,7 @@ module Jekyll
       robots = PageWithoutAFile.new(@site, __dir__, "", "robots.txt")
       robots.content = File.read(source_path("robots.txt"))
       robots.data["layout"] = nil
+      robots.data["priority_sitemap"] = @priority_sitemap
       robots
     end
 
