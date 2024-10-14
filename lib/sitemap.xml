@@ -8,7 +8,7 @@
     {% assign docs = collection.docs | where_exp:'doc','doc.sitemap != false' %}
     {% for doc in docs %}
       <url>
-        <loc>{{ doc.url | replace:'/index.html','/' | absolute_url | xml_escape }}</loc>
+        <loc>{{ doc.url | replace:'/index.html','/' | replace:'/index','/' | absolute_url | xml_escape }}</loc>
         {% if doc.last_modified_at or doc.date %}
           <lastmod>{{ doc.last_modified_at | default: doc.date | date_to_xmlschema }}</lastmod>
         {% endif %}
