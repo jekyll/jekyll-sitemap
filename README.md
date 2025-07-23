@@ -64,6 +64,11 @@ defaults:
     values:
       sitemap:         false
 ```
+## Add custom `robots.txt` rules
+
+Add a `robots_defaults.txt` file with all of your custom rules into the `_includes` folder of your site.
+
+Every new rule is appended after the `Sitemap:` rule that is automatically generated.
 
 ## Override default development settings
 
