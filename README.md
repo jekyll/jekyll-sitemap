@@ -2,7 +2,7 @@
 
 *Jekyll plugin to silently generate a sitemaps.org compliant sitemap for your Jekyll site*
 
-[![Build Status](https://travis-ci.org/jekyll/jekyll-sitemap.svg?branch=master)](https://travis-ci.org/jekyll/jekyll-sitemap)
+[![Continuous Integration](https://github.com/jekyll/jekyll-sitemap/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/jekyll/jekyll-sitemap/actions/workflows/ci.yml)
 
 ## Usage
 
